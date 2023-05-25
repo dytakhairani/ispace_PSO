@@ -20,5 +20,15 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Auth::routes();
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('landingpage');
+});
+Route::get('/materi', function () {
+    return view('pagemateri');
+});
+Route::get('/file', function () {
+    return view('filepage');
+});
