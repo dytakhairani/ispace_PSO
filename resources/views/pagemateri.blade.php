@@ -78,9 +78,9 @@
                                     <select name="material_type" id="material_type"
                                         class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                         required>
-                                        <option value="type1">Type 1</option>
-                                        <option value="type2">Type 2</option>
-                                        <option value="type3">Type 3</option>
+                                        <option value="type1">Notes</option>
+                                        <option value="type2">Video</option>
+                                        <option value="type3">Quiz</option>
                                     </select>
                                 </div>
                                 <div class="mb-4">
@@ -138,6 +138,7 @@
                 </thead>
 
             <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
+                @foreach ($posts as $post)
 
                 <tbody>
                     <tr class="bg-white">
@@ -145,17 +146,17 @@
                             class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
                             <img src="images/file-text-icon.svg" alt="">
                             <h1 class="mt-2">
-
+                                {{$post->file_name}}
                             </h1>
                         </th>
                         <td class="px-6 py-4 ">
-                            <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">Notes</h1>
+                            <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{$post->material_type}}</h1>
                         </td>
                         <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                            <h1>Syifa Mumtaz</h1>
+                            <h1>{{Auth::user()->name}}</h1>
                         </td>
                         <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                            December 2022
+                            {{$post->created_at}}
                         </td>
                         <td class="px-6  py-4 text-[#7988a8] relative  font-light">
                             113 KB
@@ -163,77 +164,9 @@
                                     class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i></a>
                         </td>
                     </tr>
-                    <tr class="bg-white">
-                        <th scope="row"
-                            class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
-                            <img src="images/file-text-icon.svg" alt="">
-                            <h1 class="mt-2">
-                                Matriks dan Determinan
-                            </h1>
-                        </th>
-                        <td class="px-6 py-4 ">
-                            <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">Notes</h1>
-                        </td>
-                        <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                            <h1>Avisha Nathania</h1>
-                        </td>
-                        <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                            October 2022
-                        </td>
-                        <td class="px-6 py-4 text-[#7988a8] relative  font-light">
-                            128 KB
-                            <a href=""><i
-                                    class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i></a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white">
-                        <th scope="row"
-                            class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
-                            <img src="images/file-vid-icon.svg" alt="">
-                            <h1 class="mt-2">
-                                Record Fungsi, Limit, dan Kontinu
-                            </h1>
-                        </th>
-                        <td class="px-6 py-4 ">
-                            <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">Video</h1>
-                        </td>
-                        <td class="px-6 text-left py-4 text-[#7988a8] font-light">
-                            <h1>Alodia Angelica Hutahaean</h1>
-                        </td>
-                        <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                            November 2022
-                        </td>
-                        <td class="px-6 py-4 text-[#7988a8] relative  font-light">
-                            180 KB
-                            <a href=""><i
-                                    class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i></a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white">
-                        <th scope="row"
-                            class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
-                            <img src="images/file-quiz-icon.svg" alt="">
-                            <h1 class="mt-2">
-                                Sistem Bilangan Riil
-                            </h1>
-                        </th>
-                        <td class="px-6 py-4 ">
-                            <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">Quiz</h1>
-                        </td>
-                        <td class="px-6 text-left py-4 text-[#7988a8] font-light">
-                            <h1>Kurniaman Andreas Zega</h1>
-                        </td>
-                        <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                            Januari 2020
-                        </td>
-                        <td class="px-6 py-4 text-[#7988a8] relative  font-light">
-                            145 KB
-                            <a href=""><i
-                                    class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i></a>
-                        </td>
                     </tr>
                 </tbody>
-
+                @endforeach
             </table>
         </div>
 
