@@ -35,8 +35,14 @@ Route::get('/file', function () {
     return view('filepage');
 });
 
+
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
-Route::put('/post', [PostController::class, 'store'])->name('post.store');
-// Route::get('/materi', [PostController::class, 'show'])->name('post.show');
+
+// Route::get('/materi', [PostController::class, 'index'])->name('post.index');
+Route::post('/materi', [PostController::class, 'store'])->name('post.store');
+
+
+// Route::put('/post', [PostController::class, 'store'])->name('post.store');
+// Route::get('/materi/post', [PostController::class, 'index'])->name('post.index');
 

@@ -13,6 +13,10 @@ class PostController extends Controller
     public function index()
     {
         //
+        $posts = Post::all();
+
+        // Kirim data posting ke tampilan
+        return view('pagemateri', compact('posts'));
     }
 
     /**
@@ -36,6 +40,7 @@ class PostController extends Controller
             'upload_file' => 'required|file',
         ]);
 
+
         // Simpan data ke database
         $post = new Post;
         $post->file_name = $request->file_name;
@@ -56,7 +61,7 @@ class PostController extends Controller
     public function show(string $id)
     {
         //public function show()
-        return view('pagemateri', compact('post'));
+
     }
 
     /**

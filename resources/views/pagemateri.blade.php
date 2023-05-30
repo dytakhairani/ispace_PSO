@@ -45,6 +45,7 @@
     </nav>
 
     <div class="mx-[147px] py-[50px]">
+
         <div class="flex items-center flex-row justify-between">
             <h1 class="text-[#283D70] ml-20 text-4xl font-semibold">Matematika 1</h1>
             <div class=" shadow-md mr-20 rounded-full  shadow-black">
@@ -59,6 +60,12 @@
                             <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
+                                {{-- @foreach ($posts as $post)
+                                    <h2>{{ $post->file_name }}</h2>
+                                    <p>{{ $post->material_type }}</p>
+                                    <p>{{ $post->material_description }}</p>
+                                    <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
+                                @endforeach --}}
                                 <div class="mb-4">
                                     <label for="file_name" class="block text-gray-800 font-bold mb-2">File Name:</label>
                                     <input type="text" name="file_name" id="file_name"
@@ -102,8 +109,9 @@
 
             </div>
         </div>
-        <div class="relative overflow-x-auto z-20 mt-12 rounded-[30px]">
-            <div class="bg-[#D9D9D9]/[0.47] w-[1300px] top-5 z-0 left-[3%] absolute rounded-full h-[49px] mx-[#42px]">
+
+        <div class="relative w-[1146px] overflow-x-auto z-20 mt-12 rounded-[30px]">
+            <div class="bg-[#D9D9D9]/[0.47] w-[1080px] top-5 z-0 left-[3%] absolute rounded-full h-[49px] mx-[#42px]">
             </div>
             <table class="w-full  text-sm bg-white text-center text[#283D70]">
 
@@ -128,6 +136,9 @@
                         </th>
                     </tr>
                 </thead>
+
+            <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
+
                 <tbody>
                     <tr class="bg-white">
                         <th scope="row"
@@ -222,8 +233,10 @@
                         </td>
                     </tr>
                 </tbody>
+
             </table>
         </div>
+
         <div class="mt-12">
             <h1 class="text-[#283D70] ml-20 text-2xl font-semibold">Reccomendation</h1>
         </div>
