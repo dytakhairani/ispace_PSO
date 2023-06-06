@@ -48,12 +48,14 @@ class PostController extends Controller
         ]);
 
 
-        // Simpan data ke database
+       //biar dpt file name aslinya
+        $eca= $request->file('upload_file')->getClientOriginalName();
+         // Simpan data ke database
         $post = new Post;
         $post->file_name = $request->file_name;
         $post->material_type = $request->material_type;
         $post->material_description = $request->material_description;
-        $post->upload_file = $request->file('upload_file')->store('uploads');
+        $post->upload_file = $eca;
         $post->save();
 
         // Redirect dengan pesan sukses
