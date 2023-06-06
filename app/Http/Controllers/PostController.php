@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+//return type View
+use Illuminate\View\View;
+//return type redirectResponse
+use Illuminate\Http\RedirectResponse;
+
+//import Facade "Storage"
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -58,11 +66,25 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): View
     {
-        //public function show()
+        //get post by ID
+        $post = Post::findOrFail($id);
+
+        //render view with post
+        return view('filepage', compact('post'));
 
     }
+
+    // method untuk hapus data pegawai
+    /*public function hapus($id)
+    {
+        // menghapus data pegawai berdasarkan id yang dipilih
+        DB::table('posts')->where('id',$id)->delete();
+
+        // alihkan halaman ke halaman pegawai
+        return redirect('/materi');
+    }*/
 
     /**
      * Show the form for editing the specified resource.
@@ -83,8 +105,19 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id): RedirectResponse
     {
-        //
+        //get post by ID
+        $post = Post::findOrFail($id);
+
+        //delete image
+        Storage::delete('storage/app/'.$post->upload_file);
+
+        //delete post
+        $post->delete();
+
+        //redirect to index
+        return redirect()->route('post.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
+
 }

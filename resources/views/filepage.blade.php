@@ -29,14 +29,14 @@
 
             <div class="main" style="padding-left: 99px;padding-top: 41px">
                 <h1 class="title" style="font-weight: bold;font-size: 32px;color: #283D70">Matematika 1</h1>
-                <p class="owner opacity-50" style="color: #142F64">Published by Alodia Angelica Hutahaean November 2022</p>
-                <div class="name " style="font-weight: bold;font-size: 20px;color: #283D70">Matriks dan Determinan</div>
+                <p class="owner opacity-50" style="color: #142F64">Published by {{Auth::user()->name}} {{$post->created_at}}</p>
+                <div class="name " style="font-weight: bold;font-size: 20px;color: #283D70">{{$post->file_name}}</div>
                 <div class="border border-2 border-black rounded-4"
                     style="width: 88px;height: 20px;margin-top: 12px;margin-bottom: 17px;">
                     <p class="text-center font-medium " style="font-size: 10px">Semester 1</p>
                 </div>
 
-                <img class="materi" src="images/materi.jpeg" alt="materi 1" style="width: 579px;height: 421px;" />
+                <img class="materi" src="{{ asset('storage/app/'.$post->upload_file) }}" alt="materi 1" style="width: 579px;height: 421px;">
                 <div class="group-download" style="">
                     <a class="btn rounded-5 d-flex align-items-center justify-content-center"
                         style="width: 250px;height: 50px;background-color:#68CE93; color: #ffff;margin-top: 49px">Download
