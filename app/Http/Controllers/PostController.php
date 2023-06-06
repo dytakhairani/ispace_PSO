@@ -120,4 +120,12 @@ class PostController extends Controller
         return redirect()->route('post.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 
+    public function download($id)
+    {
+        $post = Post::findOrFail($id);
+        $data = DB::table('posts')->where('id',$id)->first();
+        $filepath =storage_path("app/{$post->upload_file}");
+        return response()->download($filepath);
+    }
+
 }
