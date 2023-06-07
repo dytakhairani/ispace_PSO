@@ -138,7 +138,7 @@
                 </thead>
 
             <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
-                @foreach ($posts as $post)
+                @foreach ($ecak as $post)
 
                 <tbody>
                     <tr class="bg-white">
