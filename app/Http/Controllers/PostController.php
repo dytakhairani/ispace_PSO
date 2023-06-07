@@ -134,5 +134,12 @@ class PostController extends Controller
 		return view('search-results', compact('posts'));
 
 	}
+    public function download($id)
+    {
+        $post = Post::findOrFail($id);
+        $data = DB::table('posts')->where('id',$id)->first();
+        $filepath =storage_path("app/{$post->upload_file}");
+        return response()->download($filepath);
+    }
 
 }
