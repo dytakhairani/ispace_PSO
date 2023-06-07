@@ -163,10 +163,11 @@
                     </tr>
                 </thead>
 
-                <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
-                @foreach ($posts as $post)
-                    <tbody>
-                        <tr class="bg-white">
+            <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
+                @foreach ($ecak as $post)
+
+                <tbody>
+                    <tr class="bg-white">
 
                             <th scope="row"
                                 class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">

@@ -21,10 +21,10 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
+        $ecak = Post::all();
 
         // Kirim data posting ke tampilan
-        return view('pagemateri', compact('posts'));
+        return view('pagemateri', compact('ecak'));
     }
 
     /**
@@ -50,6 +50,9 @@ class PostController extends Controller
 
        //biar dpt file name aslinya
         $eca= $request->file('upload_file')->getClientOriginalName();
+        //move ke directory lain
+        $uploadDir = 'public/uploads';
+        $path = $request ->file('upload_file')->storeAs($uploadDir,$eca);
          // Simpan data ke database
         $post = new Post;
         $post->file_name = $request->file_name;
@@ -112,13 +115,13 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         //delete image
-        Storage::delete('storage/app/'.$post->upload_file);
+        Storage::delete('storage/uploads/'.$post->upload_file);
 
         //delete post
         $post->delete();
 
         //redirect to index
-        return redirect()->route('post.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->back()->with(['success' => 'Data Berhasil Dihapus!']);
     }
 
     public function cari(Request $request)
@@ -137,9 +140,10 @@ class PostController extends Controller
 	}
     public function download($id)
     {
+        $uploadDir = 'storage/uploads/';
         $post = Post::findOrFail($id);
         $data = DB::table('posts')->where('id',$id)->first();
-        $filepath =storage_path("app/{$post->upload_file}");
+        $filepath ="$uploadDir{$post->upload_file}";
         return response()->download($filepath);
     }
 
