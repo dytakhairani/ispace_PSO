@@ -39,23 +39,14 @@
 </style>
 
 
-<body class="bg-[#ededed] relative">
+<body class="bg-[#ededed] ">
     <nav>
-        @include('components.headertailwind_pagemateri')
+        @include('components.headertailwind')
     </nav>
 
-    <!-- alert download -->
-    {{-- <div class="absolute bg-white rounded-[30px] border-2 border-[#283D70] text-[#283D70] w-[586px] h-[94px] pl-[37px] right-0 mr-[28px] mt-[16px]">
-        <h1 class="font-bold text-[20px] mb-[6px] mt-[11px]">Download</h1>
-        <div class="flex flex-row gap-[7px]">
-            <img src="{{ asset('images/logo-download.png') }}" alt="">
-            <h1>“Bilangan Kompleks” telah berhasil diunduh</h1>
-        </div>
-    </div> --}}
-    <!-- alert download -->
-    <div class=" relative mx-[147px] py-[50px]">
+    <div class="mx-[147px] py-[50px]">
 
-        <div class=" flex items-center flex-row justify-between">
+        <div class="flex items-center flex-row justify-between">
             <h1 class="text-[#283D70] ml-20 text-4xl font-semibold">Matematika 1</h1>
             <div class=" shadow-md mr-20 rounded-full  shadow-black">
                 <!-- popup : start -->
@@ -64,7 +55,7 @@
                         src="images/btn-add.svg" alt="">
                     <div x-show="open"
                         class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                        <div class="bg-white p-6 rounded-[20px] shadow-xl w-[676px] h-[579px]">
+                        <div class="bg-white p-6 rounded shadow-xl">
                             <!-- Form untuk posting ke database -->
                             <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -76,19 +67,6 @@
                                     <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
                                 @endforeach --}}
                                 <div class="mb-4">
-                                    <div class="flex flex-row">
-                                        <div class="text-[#283D70] font-bold mb-[28px]">
-                                            Share your material here!
-                                        </div>
-                                        <div class="flex justify-end ml-auto">
-                                            <button type="button" @click="open = false">
-                                                <img src="{{ asset('images/close.png') }}" alt="">
-                                            </button>
-                                        </div>
-                                        <img src="" alt="">
-                                    </div>
-
-
                                     <label for="file_name" class="block text-gray-800 font-bold mb-2">File Name:</label>
                                     <input type="text" name="file_name" id="file_name"
                                         class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -124,7 +102,6 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
 
 
@@ -148,16 +125,13 @@
                             class="w-32 px-6  pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
                             File Type
                         </th>
-                        <th scope="col"
-                            class="w-36 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
+                        <th scope="col" class="w-36 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
                             Owner
                         </th>
-                        <th scope="col"
-                            class="w-32 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
+                        <th scope="col" class="w-32 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
                             Last Modified
                         </th>
-                        <th scope="col"
-                            class="w-32 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
+                        <th scope="col" class="w-32 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
                             File size
                         </th>
                     </tr>
@@ -169,106 +143,74 @@
                 <tbody>
                     <tr class="bg-white">
 
-                            <th scope="row"
-                                class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
-                                <img src="images/file-text-icon.svg" alt="">
-                                <a href="{{ route('post.show', ['id' => $post]) }}">
-                                    <h1 class="mt-2">
-                                        {{ $post->file_name }}
-                                    </h1>
-                                </a>
-                            </th>
+                        <th scope="row"
+                            class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
+                            <img src="images/file-text-icon.svg" alt="">
+                            <a href="{{ route('post.show', ['id' => $post]) }}">
+                            <h1 class="mt-2">
+                                {{$post->file_name}}
+                            </h1>
+                            </a>
+                        </th>
 
-                            <td class="px-6 py-4 ">
-                                <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{ $post->material_type }}</h1>
-                            </td>
-                            <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                                <h1>{{ Auth::user()->name }}</h1>
-                            </td>
-                            <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                                {{ $post->created_at }}
-                            </td>
-                            <td class="px-6  py-4 text-[#7988a8] relative  font-light">
-                                113 KB
-                                <div x-data="{ open: false }" class="relative">
-                                    <div @click="open = !open" class="  cursor-pointer">
+                        <td class="px-6 py-4 ">
+                            <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{$post->material_type}}</h1>
+                        </td>
+                        <td class="px-6 py-4 text-left text-[#7988a8] font-light">
+                            <h1>{{Auth::user()->name}}</h1>
+                        </td>
+                        <td class="px-6 py-4 text-left text-[#7988a8] font-light">
+                            {{$post->created_at}}
+                        </td>
+                        <td class="px-6  py-4 text-[#7988a8] relative  font-light">
+                            113 KB
+                            <div x-data="{ open: false }" class="relative">
+                                <div @click="open = !open" class="  cursor-pointer">
 
-                                        <div x-show="!open" href=""><i
-                                                class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
-                                        </div>
-                                        <div x-show="open" href=""><i
-                                                class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
-                                        </div>
+                                    <div x-show="!open" href=""><i
+                                            class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
                                     </div>
-
-                                    <ul x-show="open" @click.away="open = false"
-                                        class="absolute right-0 mt-2 py-2 w-48 bg-white rounded shadow-xl z-10">
-                                        <div x-data="{ showDownloadAlert: false }">
-                                            <li><a x-on:click="showDownloadAlert = true"
-                                                    href="'storage/app/'.$post->upload_file" download
-                                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
-                                                        class="fa fa-download"></i> Download</a>
-                                            </li>
-                                            <template x-if="showDownloadAlert">
-                                                <div
-                                                    class="absolute bg-white rounded-[30px] border-2 border-[#283D70] text-[#283D70] w-[586px] h-[94px] pl-[37px] right-0 mr-[28px] mt-[16px]">
-                                                    <h1 class="font-bold text-[20px] mb-[6px] mt-[11px]">Download</h1>
-                                                    <div class="flex flex-row gap-[7px]">
-                                                        <img src="{{ asset('images/logo-download.png') }}"
-                                                            alt="">
-                                                        <h1>“Bilangan Kompleks” telah berhasil diunduh</h1>
-                                                    </div>
-                                                    <button x-on:click="showDownloadAlert = false"
-                                                        class="absolute top-[-800px] right-[11px] text-[#283D70] hover:text-[#283D70]">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor"
-                                                            class="h-5 w-5">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </template>
-                                        </div>
-
-                                        <div x-data="{ open: false }">
-                                            <li><a @click="open = true"
-                                                    class="transform transition duration-300 cursor-pointer
-                                        block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
-                                                        class="fa fa-trash"></i> Delete</a>
-                                                <div x-show="open"
-                                                    class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                                                    <div class="bg-white p-6 rounded shadow-xl">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <h5><b>Delete File?</b></h5>
-                                                        <br>
-                                                        <br>
-                                                        <div class="group-delete-confirmation" style="">
-                                                            <a class="btn rounded-5 d-flex align-items-center justify-content-center"
-                                                                style="width: 250px;height: 50px;background-color:#F8F1E9; color: #000000;margin-top: 49px">Are
-                                                                you sure you want to delete?</a>
-                                                        </div>
-                                                        <br>
-                                                        <br>
-                                                        <div class="group-delete-confirmation" style="">
-                                                            <a href="/materi/delete/{{ $post->id }}"
-                                                                class="btn rounded-5 d-flex align-items-center justify-content-center"
-                                                                style="width: 250px;height: 50px;background-color:#68CE93; color: #FFFF;margin-top: 49px">Delete</a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </div>
-                                    </ul>
+                                    <div x-show="open" href=""><i
+                                            class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                    </div>
                                 </div>
-                            </td>
-                        </tr>
-                        </tr>
-                    </tbody>
+
+                                <ul x-show="open" @click.away="open = false"
+                                    class="absolute right-0 mt-2 py-2 w-48 bg-white rounded shadow-xl z-10">
+                                    <li><a href="{{url('/download/'.$post->id)}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200"><i class="fa fa-download"></i> Download</a>
+                                    </li>
+                                    <div x-data="{ open: false }">
+                                    <li><a @click="open = true" class="transform transition duration-300 cursor-pointer
+                                        block px-4 py-2 text-gray-800 hover:bg-gray-200"><i class="fa fa-trash"></i> Delete</a>
+                                        <div x-show="open"
+                                        class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+                                        <div class="bg-white p-6 rounded shadow-xl">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h5><b>Delete File?</b></h5>
+                                            <br>
+                                            <br>
+                                            <div class="group-delete-confirmation" style="">
+                                                <a class="btn rounded-5 d-flex align-items-center justify-content-center"
+                                                    style="width: 250px;height: 50px;background-color:#F8F1E9; color: #000000;margin-top: 49px">Are you sure you want to delete?</a>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="group-delete-confirmation" style="">
+                                                <a href="/materi/delete/{{$post->id}}" class="btn rounded-5 d-flex align-items-center justify-content-center"
+                                                    style="width: 250px;height: 50px;background-color:#68CE93; color: #FFFF;margin-top: 49px">Delete</a>
+                                            </div>
+
+                                        </div>
+                                        </div>
+                                    </li>
+                                    </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tr>
+                </tbody>
                 @endforeach
             </table>
         </div>
