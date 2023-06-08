@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -56,6 +57,11 @@ class RegisterController extends Controller
             'nrp' => ['required', 'numeric','digits_between:1,20'],
             'date' => ['required', 'date'],
         ]);
+
+        $user->username = Auth::user()->name; // Autofill username
+        $user->save();
+
+        return $user;
     }
 
     /**
