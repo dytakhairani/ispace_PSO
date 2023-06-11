@@ -58,6 +58,7 @@ class PostController extends Controller
         $post->file_name = $request->file_name;
         $post->material_type = $request->material_type;
         $post->material_description = $request->material_description;
+        $post->owner = $request->owner;
         $post->upload_file = $eca;
         $post->save();
 

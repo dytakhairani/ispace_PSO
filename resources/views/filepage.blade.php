@@ -29,7 +29,7 @@
 
             <div class="main" style="padding-left: 99px;padding-top: 41px">
                 <h1 class="title" style="font-weight: bold;font-size: 32px;color: #283D70">Matematika 1</h1>
-                <p class="owner opacity-50" style="color: #142F64">Published by {{Auth::user()->name}} {{$post->created_at}}</p>
+                <p class="owner opacity-50" style="color: #142F64">Published by {{$post->owner}} {{$post->created_at}}</p>
                 <div class="name " style="font-weight: bold;font-size: 20px;color: #283D70">{{$post->file_name}}</div>
                 <div class="border border-2 border-black rounded-4"
                     style="width: 88px;height: 20px;margin-top: 12px;margin-bottom: 17px;">

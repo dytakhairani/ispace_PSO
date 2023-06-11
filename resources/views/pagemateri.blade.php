@@ -209,7 +209,7 @@
                             <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{$post->material_type}}</h1>
                         </td>
                         <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                            <h1>{{Auth::user()->name}}</h1>
+                            <h1>{{$post->owner}}</h1>
                         </td>
                         <td class="px-6 py-4 text-left text-[#7988a8] font-light">
                             {{$post->created_at}}
