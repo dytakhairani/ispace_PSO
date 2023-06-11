@@ -3,19 +3,20 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/sign.css') }}">
     <div class="container">
-        <div class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="iSpace">
+        <div class="logo"><a href="/">
+                <img src="{{ asset('images/logo.png') }}" alt="iSpace"></a>
         </div>
         <div class="form">
             <div class="card">
                 <h2>Sign In</h2>
-                <p>Please login to your account.</p>
+                <p style="color:grey;">Please login to your account.</p>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <!-- form -->
                     <div class="form-group">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email"
+                            autofocus>
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -25,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                            name="password" required autocomplete="current-password">
+                            name="password" placeholder="Password" required autocomplete="current-password">
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -36,7 +37,7 @@
                     <!-- form -->
 
                     <div class="row mb-3">
-                        <div class="col-md-6 offset-md-4">
+                        <div style="margin-left:20px">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                     {{ old('remember') ? 'checked' : '' }}>
@@ -55,7 +56,7 @@
                             </button>
 
                             @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ route('password.request') }}" style="font-size:smaller;">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             @endif

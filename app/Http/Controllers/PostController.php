@@ -125,6 +125,21 @@ class PostController extends Controller
         return redirect()->back()->with(['success' => 'Data Berhasil Dihapus!']);
     }
 
+    public function cari(Request $request)
+	{
+		// menangkap data pencarian
+		$cari = $request->input('keyword');
+
+    		// mengambil data dari table pegawai sesuai pencarian data
+		$posts = DB::table('posts')
+		->where('file_name','like',"%".$cari."%")
+        ->get();
+
+    		// mengirim data pegawai ke view index
+		return view('search-results', compact('posts'));
+
+	}
+
     public function download($id)
     {
         $uploadDir = 'storage/uploads/';
