@@ -46,7 +46,7 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Matematika</h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
@@ -72,7 +72,7 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Konsep Sistem Informasi</h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>

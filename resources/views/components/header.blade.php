@@ -42,9 +42,9 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
-                    <form class="form-inline my-2 my-lg-0 " style="width: 449px">
-                        <input class="form-control mr-sm-2" type="search"
-                            placeholder="What lesson do you want to find? ">
+                    <form class="form-inline my-2 my-lg-0 "action="/materi/cari" method="GET" style="width: 449px">
+                        <input class="form-control mr-sm-2"
+                            placeholder="What lesson do you want to find? " type="text" name="keyword">
                         {{-- <i class="bi bi-search "></i> --}}
                     </form>
 
