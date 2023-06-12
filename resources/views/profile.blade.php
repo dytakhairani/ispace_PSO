@@ -144,7 +144,7 @@
 
                     <div class="flex flex-row justify-center mt-[38px]">
                         <button type="submit"
-                            class="w-[193px] flex justify-center font-light items-center text-white rounded-[25px] bg-[#FABB5A] h-[54px]">Update
+                            class="w-[193px] flex justify-center font-light items-center text-white rounded-[25px] bg-[#FABB5A] hover:bg-[#68CE93] h-[54px]">Update
                             Profil</button>
                     </div>
                 </form>
