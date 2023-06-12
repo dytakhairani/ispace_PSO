@@ -55,7 +55,7 @@
                         src="images/btn-add.svg" alt="">
                     <div x-show="open"
                         class=" fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                        <div class="bg-white rounded-[20px]  shadow-xl w-[676px] h-[579px]">
+                        <div class="bg-white rounded-[20px]  shadow-xl w-[676px] h-[640px]">
                             <!-- Form untuk posting ke database -->
                             <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
