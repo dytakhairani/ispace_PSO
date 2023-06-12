@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Folder extends Model
 {
+    protected $table = 'folder';
     protected $fillable = ['folderNama', 'folderSemester', 'folderTotalFiles'];
 }

@@ -66,7 +66,7 @@
 </div> --}}
 
 <div style="font-family: 'Poppins', sans-serif;" class="bg-[#F2F2F2]">
-    <div class="mx-[234px] py-[90px]">
+    <div class="mx-[234px] py-[25px]">
         <div class="flex flex-row gap-[134px]">
             <div class="flex justify-center items-center mb-24">
                 <div class="w-[237px] h-[237px] relative">
@@ -92,52 +92,52 @@
                       </div> --}}
 
                     @csrf
-                    <div class="flex gap-3 flex-col">
+                    <div class="flex gap-1 mt-1 flex-col">
                         <label class="ml-4 font-semibold text-sm text-black" for="Full Name">Full Name</label>
-                        <div class="w-[553px] h-[50px] relative">
+                        <div class="w-[553px] h-[60px] relative">
                             <input type="text" name="name" id="name" value="{{ $user->name }}"
-                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-black rounded-xl">
+                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-grey rounded-xl">
                             <img class="absolute bottom-[26%] right-4" src="images/Edit.svg" alt="">
                         </div>
                     </div>
-                    <div class="flex gap-3 flex-col">
+                    <div class="flex gap-1 mt-1 flex-col">
                         <label class="ml-4 font-semibold text-sm text-black" for="email">Email</label>
-                        <div class="w-[553px] h-[50px] relative">
+                        <div class="w-[553px] h-[60px] relative">
                             <input type="email" name="email" id="email" value="{{ $user->email }}"
-                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-black rounded-xl">
+                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-grey rounded-xl">
                             <img class="absolute bottom-[26%] right-4" src="images/Edit.svg" alt="">
                         </div>
                     </div>
-                    <div class="flex gap-3 flex-col">
+                    <div class="flex gap-1 mt-1 flex-col">
                         <label class="ml-4 font-semibold text-sm text-black" for="nrp">NRP</label>
-                        <div class="w-[553px] h-[50px] relative">
+                        <div class="w-[553px] h-[60px] relative">
                             <input type="text" name="nrp" id="nrp" value="{{ $user->nrp }}"
-                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-black rounded-xl">
+                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-grey rounded-xl">
                             <img class="absolute bottom-[26%] right-4" src="images/Edit.svg" alt="">
                         </div>
                     </div>
-                    <div class="flex gap-3 flex-col">
+                    <div class="flex gap-1 mt-1 flex-col">
                         <label class="ml-4 font-semibold text-sm text-black" for="date">Date of Birth</label>
-                        <div class="w-[553px] h-[50px] relative">
+                        <div class="w-[553px] h-[60px] relative">
                             <input type="date" name="date" id="date" value="{{ $user->date }}"
-                                class="w-[553px] pr-4 h-[50px] appearance-none shadow-md text-[##9ca3af] pl-4 shadow-black rounded-xl">
+                                class="w-[553px] pr-4 h-[50px] appearance-none shadow-md text-[##9ca3af] pl-4 shadow-grey rounded-xl">
                         </div>
                     </div>
-                    <div class="flex gap-3 flex-col">
+                    <div class="flex gap-1 mt-1 flex-col">
                         <label class="ml-4 font-semibold text-sm text-black" for="password">Password</label>
-                        <div class="w-[553px] h-[50px] relative">
+                        <div class="w-[553px] h-[60px] relative">
                             <input type="password" name="password" id="password"
-                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-black rounded-xl">
+                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-grey rounded-xl">
                             <img class="absolute bottom-[26%] right-4" src="images/Edit.svg" alt="">
                         </div>
                     </div>
 
-                    <div class="flex gap-3 flex-col">
+                    <div class="flex gap-1 mt-1 flex-col">
                         <label class="ml-4 font-semibold text-sm text-black"
                             for="password_confirmation">Password</label>
-                        <div class="w-[553px] h-[50px] relative">
+                        <div class="w-[553px] h-[60px] relative">
                             <input type="password" name="password_confirmation" id="password_confirmation"
-                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-black rounded-xl">
+                                class="w-[553px] pr-10 h-[50px] shadow-md pl-4 shadow-grey rounded-xl">
                             <img class="absolute bottom-[26%] right-4" src="images/Edit.svg" alt="">
                         </div>
                     </div>

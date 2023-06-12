@@ -61,9 +61,9 @@
         <div
             class="flex flex-row bg-[#FFFFFF] border-2  p-2 rounded-lg  mb-4 w-[449px] md:mb-0 md:w-[449px] h-[40px] relative ">
             <img src="{{ asset('/images/search.png ') }}" class=" w-[15.7px] h-[15.7px]  relative" alt="">
-            <form class="">
+            <form class="" action="/home/cari" method="GET">
                 <input class="bg-transparent w-[449px] h-[40px] rounded-lg absolute ml-[-23px] mt-[-10.5px] pl-[35px]"
-                    placeholder="What lesson do you want to find?" type="text">
+                    placeholder="What lesson do you want to find?" type="text" name="keyword">
             </form>
         </div>
         <!-- END Search field -->

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,7 @@ Auth::routes();
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'matkul'])->name('home');
 Route::get('/', function () {
     return view('landingpage');
 });
@@ -34,6 +36,7 @@ Route::get('/materi', function () {
 Route::get('/file', function () {
     return view('filepage');
 });
+Route::get('/home/cari',[HomeController::class, 'cari']);
 
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
