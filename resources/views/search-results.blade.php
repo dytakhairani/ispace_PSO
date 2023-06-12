@@ -54,7 +54,8 @@
                 </div>
                 <div class="flex flex-row">
                     <img src={{ asset('/images/searchfile.png') }} alt="" class="ml-[117px] mt-[50px]">
-                    <h1 class="font-medium text-[22px] flex items-center ml-[101px]">Kata yang anda cari tidak dapat ditemukan</h1>
+                    <h1 class="font-medium text-[22px] flex items-center ml-[101px]">Kata yang anda cari tidak dapat
+                        ditemukan</h1>
                 </div>
             </div>
         @else
@@ -193,42 +194,10 @@
             </div>
         @endif
 
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 6,
-                spaceBetween: 34,
-                loop: false,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next-unique',
-                    prevEl: '.swiper-button-prev-unique'
-                }
 
-            });
-        </script>
     </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 6,
-            spaceBetween: 34,
-            loop: false,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next-unique',
-                prevEl: '.swiper-button-prev-unique'
-            }
 
-        });
-    </script>
+
 </body>
 
 </html>
