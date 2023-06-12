@@ -242,33 +242,33 @@
                                         <div x-data="{ open: false }">
                                             <li><a @click="open = true"
                                                     class="transform transition duration-300 cursor-pointer
-                                        block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
+                                                        block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
                                                         class="fa fa-trash"></i> Delete</a>
                                                 <div x-show="open"
                                                     class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                                                    <div class="bg-white p-6 rounded shadow-xl">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
+                                                    <div class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
+                                                        <button @click="open = false"
+                                                            class="absolute right-[510px] top-[170px]">
+                                                            <!-- Tambahkan ikon close di sini, misalnya menggunakan font awesome -->
+                                                            <img src="images/close.png" alt="">
                                                         </button>
-                                                        <h5><b>Delete File?</b></h5>
-                                                        <br>
-                                                        <br>
-                                                        <div class="group-delete-confirmation" style="">
-                                                            <a class="btn rounded-5 d-flex align-items-center justify-content-center"
-                                                                style="width: 250px;height: 50px;background-color:#F8F1E9; color: #000000;margin-top: 49px">Are
-                                                                you sure you want to delete?</a>
-                                                        </div>
-                                                        <br>
-                                                        <br>
-                                                        <div class="group-delete-confirmation" style="">
-                                                            <a href="/materi/delete/{{ $post->id }}"
-                                                                class="btn rounded-5 d-flex align-items-center justify-content-center"
-                                                                style="width: 250px;height: 50px;background-color:#68CE93; color: #FFFF;margin-top: 49px">Delete</a>
-                                                        </div>
 
+                                                        <h5
+                                                            class="text-[#283D70] font-bold text-[20px] mb-[35px] mt-[66px]">
+                                                            Delete File?</h5>
+                                                        <div
+                                                            class="mx-auto flex items-center justify-center w-[317.7px] h-[45.17px] bg-[#F8F1E9] rounded-[20px]">
+                                                            <p class="text-black text-[14px]">Are you sure you want to
+                                                                delete?</p>
+                                                        </div>
+                                                        <div
+                                                            class="bg-[#68CE93] w-[78.96px] h-[26.47px] mx-auto rounded-[20px] flex justify-center items-center mt-[160.8px]">
+                                                            <a href="/materi/delete/{{ $post->id }}"
+                                                                class="text-white font-bold text-[16px]">Delete</a>
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </li>
                                         </div>
                                 </div>
