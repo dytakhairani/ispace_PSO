@@ -68,7 +68,8 @@
                                 @endforeach --}}
                                 <div class=" pr-[44.8px]">
                                     <div class="flex flex-row">
-                                        <img src="{{ asset('images/material.png') }}" class="ml-[34px] w-[21.33px] h-[26.67px] my-auto" alt="">
+                                        <img src="{{ asset('images/material.png') }}"
+                                            class="ml-[34px] w-[21.33px] h-[26.67px] my-auto" alt="">
                                         <div class="ml-[22.6px] text-[#283D70] font-bold my-[27px]">
                                             Share your material here!
                                         </div>
@@ -89,7 +90,7 @@
                                             Name:</label>
                                         <input type="text" name="owner" id="owner"
                                             class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                            value="{{ old('uploader', Auth::user()->name)}}" readonly>
+                                            value="{{ old('uploader', Auth::user()->name) }}" readonly>
                                     </div>
 
                                     <div>
@@ -136,8 +137,9 @@
                                             class="flex flex-col items-center justify-center w-full h-[69px] border-2 rounded-[20px] bg-[#F8F1E9]">
                                             <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                                 <img src="images/file-upload.png" alt="">
-                                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-[12px]"><span
-                                                        class="font-semibold">Input your file</p>
+                                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-[12px]">
+                                                    <span class="font-semibold">Input your file
+                                                </p>
                                             </div>
                                             <input name="upload_file" id="upload_file" type="file" class="hidden" />
                                         </label>
@@ -177,96 +179,159 @@
                             class="w-32 px-6  pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
                             File Type
                         </th>
-                        <th scope="col" class="w-36 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
+                        <th scope="col"
+                            class="w-36 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
                             Owner
                         </th>
-                        <th scope="col" class="w-32 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
+                        <th scope="col"
+                            class="w-32 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
                             Last Modified
                         </th>
-                        <th scope="col" class="w-32 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
+                        <th scope="col"
+                            class="w-32 px-6 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
                             File size
                         </th>
                     </tr>
                 </thead>
 
-            <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
+                <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
                 @foreach ($ecak as $post)
+                    <tbody>
+                        <tr class="bg-white">
 
-                <tbody>
-                    <tr class="bg-white">
+                            <th scope="row"
+                                class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
+                                <img src="images/file-text-icon.svg" alt="">
+                                <a href="{{ route('post.show', ['id' => $post]) }}">
+                                    <h1 class="mt-2">
+                                        {{ $post->file_name }}
+                                    </h1>
+                                </a>
+                            </th>
 
-                        <th scope="row"
-                            class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
-                            <img src="images/file-text-icon.svg" alt="">
-                            <a href="{{ route('post.show', ['id' => $post]) }}">
-                            <h1 class="mt-2">
-                                {{$post->file_name}}
-                            </h1>
-                            </a>
-                        </th>
+                            <td class="px-6 py-4 ">
+                                <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{ $post->material_type }}</h1>
+                            </td>
+                            <td class="px-6 py-4 text-left text-[#7988a8] font-light">
+                                <h1>{{ $post->owner }}</h1>
+                            </td>
+                            <td class="px-6 py-4 text-left text-[#7988a8] font-light">
+                                {{ $post->created_at }}
+                            </td>
+                            <td class="px-6  py-4 text-[#7988a8] relative  font-light">
+                                113 KB
+                                <div x-data="{ open: false }" class="relative">
+                                    <div @click="open = !open" class="  cursor-pointer">
 
-                        <td class="px-6 py-4 ">
-                            <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{$post->material_type}}</h1>
-                        </td>
-                        <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                            <h1>{{$post->owner}}</h1>
-                        </td>
-                        <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                            {{$post->created_at}}
-                        </td>
-                        <td class="px-6  py-4 text-[#7988a8] relative  font-light">
-                            113 KB
-                            <div x-data="{ open: false }" class="relative">
-                                <div @click="open = !open" class="  cursor-pointer">
-
-                                    <div x-show="!open" href=""><i
-                                            class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                        <div x-show="!open" href=""><i
+                                                class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                        </div>
+                                        <div x-show="open" href=""><i
+                                                class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                        </div>
                                     </div>
-                                    <div x-show="open" href=""><i
-                                            class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
-                                    </div>
+
+                                    <ul x-show="open" @click.away="open = false"
+                                        class="absolute right-0 mt-2 py-2 w-48 bg-white rounded shadow-xl z-10">
+                                        <li>
+                                            <a id="downloadBtn" href="{{ url('/download/' . $post->id) }}"
+                                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
+                                                    class="fa fa-download"></i> Download
+                                            </a>
+                                        </li>
+                                        <div x-data="{ open: false }">
+                                            <li><a @click="open = true"
+                                                    class="transform transition duration-300 cursor-pointer
+                                        block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
+                                                        class="fa fa-trash"></i> Delete</a>
+                                                <div x-show="open"
+                                                    class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+                                                    <div class="bg-white p-6 rounded shadow-xl">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h5><b>Delete File?</b></h5>
+                                                        <br>
+                                                        <br>
+                                                        <div class="group-delete-confirmation" style="">
+                                                            <a class="btn rounded-5 d-flex align-items-center justify-content-center"
+                                                                style="width: 250px;height: 50px;background-color:#F8F1E9; color: #000000;margin-top: 49px">Are
+                                                                you sure you want to delete?</a>
+                                                        </div>
+                                                        <br>
+                                                        <br>
+                                                        <div class="group-delete-confirmation" style="">
+                                                            <a href="/materi/delete/{{ $post->id }}"
+                                                                class="btn rounded-5 d-flex align-items-center justify-content-center"
+                                                                style="width: 250px;height: 50px;background-color:#68CE93; color: #FFFF;margin-top: 49px">Delete</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
                                 </div>
-
-                                <ul x-show="open" @click.away="open = false"
-                                    class="absolute right-0 mt-2 py-2 w-48 bg-white rounded shadow-xl z-10">
-                                    <li><a href="{{url('/download/'.$post->id)}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200"><i class="fa fa-download"></i> Download</a>
-                                    </li>
-                                    <div x-data="{ open: false }">
-                                    <li><a @click="open = true" class="transform transition duration-300 cursor-pointer
-                                        block px-4 py-2 text-gray-800 hover:bg-gray-200"><i class="fa fa-trash"></i> Delete</a>
-                                        <div x-show="open"
-                                        class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                                        <div class="bg-white p-6 rounded shadow-xl">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            <h5><b>Delete File?</b></h5>
-                                            <br>
-                                            <br>
-                                            <div class="group-delete-confirmation" style="">
-                                                <a class="btn rounded-5 d-flex align-items-center justify-content-center"
-                                                    style="width: 250px;height: 50px;background-color:#F8F1E9; color: #000000;margin-top: 49px">Are you sure you want to delete?</a>
-                                            </div>
-                                            <br>
-                                            <br>
-                                            <div class="group-delete-confirmation" style="">
-                                                <a href="/materi/delete/{{$post->id}}" class="btn rounded-5 d-flex align-items-center justify-content-center"
-                                                    style="width: 250px;height: 50px;background-color:#68CE93; color: #FFFF;margin-top: 49px">Delete</a>
-                                            </div>
-
-                                        </div>
-                                        </div>
-                                    </li>
-                                    </div>
-                            </div>
-                        </td>
-                    </tr>
-                    </tr>
-                </tbody>
+                            </td>
+                        </tr>
+                        </tr>
+                    </tbody>
                 @endforeach
             </table>
         </div>
 
+        <!-- alert -->
+
+        <div>
+            {{-- <button id="downloadBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ">
+                Download
+            </button> --}}
+
+            <script>
+                document.getElementById("downloadBtn").addEventListener("click", function() {
+                    var alertDiv = document.createElement("div");
+                    alertDiv.className =
+                        "bg-white rounded-[30px] border-2 border-[#283D70] pl-[37px] text-[#283D70] w-[586px] h-[94px] fixed top-24 right-8 gap-4";
+
+                    var heading = document.createElement("h1");
+                    heading.className = "text-[20px] mb-[6px] mt-[11px] font-bold";
+                    heading.textContent = "Download";
+
+                    var contentDiv = document.createElement("div");
+                    contentDiv.className = "flex flex-row items-center gap-[7px]";
+
+                    var image = document.createElement("img");
+                    image.src = "{{ asset('images/logo-download.png') }}";
+                    image.alt = "";
+
+                    var message = document.createElement("h1");
+                    message.textContent = "“Bilangan Kompleks” telah berhasil diunduh";
+
+                    // var closeButton = document.createElement("button");
+                    // closeButton.className = "ml-auto mt-[-50px] p-2 rounded-full hover:bg-gray-200";
+                    // closeButton.innerHTML =
+                    //     '<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1zm5.9 14.7a1 1 0 0 1-1.4 1.4L12 13.42l-4.5 4.5a1 1 0 1 1-1.4-1.42l4.5-4.5-4.5-4.5a1 1 0 0 1 1.4-1.4l4.5 4.5 4.5-4.5a1 1 0 0 1 1.4 1.4L13.42 12l4.5 4.5z"/></svg>';
+                    // closeButton.addEventListener("click", function() {
+                    //     alertDiv.remove();
+                    // });
+
+                    contentDiv.appendChild(image);
+                    contentDiv.appendChild(message);
+                    // contentDiv.appendChild(closeButton);
+
+                    alertDiv.appendChild(heading);
+                    alertDiv.appendChild(contentDiv);
+
+                    document.body.appendChild(alertDiv);
+
+                    setTimeout(function() {
+                        alertDiv.remove();
+                    }, 3000);
+                });
+            </script>
+        </div>
+
+        <!-- alert -->
         <div class="mt-12">
             <h1 class="text-[#283D70] ml-20 text-2xl font-semibold">Reccomendation</h1>
         </div>
@@ -297,7 +362,8 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
+                                </h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
@@ -310,7 +376,8 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
+                                </h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
@@ -323,7 +390,8 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
+                                </h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
@@ -336,7 +404,8 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
+                                </h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
@@ -349,7 +418,8 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
+                                </h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
@@ -362,7 +432,8 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
+                                </h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
@@ -375,7 +446,8 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
+                                </h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
@@ -388,7 +460,8 @@
                                 <img src="images/uwong.svg" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
+                                </h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
@@ -401,7 +474,8 @@
                                 <img src="{{ asset('images/uwong.svg') }}" alt="">
                             </div>
                             <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit</h1>
+                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
+                                </h1>
                                 <h1
                                     class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
                                     Semester 1</h1>
