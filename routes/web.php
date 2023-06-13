@@ -30,9 +30,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'matkul'])->nam
 Route::get('/', function () {
     return view('landingpage');
 });
-Route::get('/materi', function () {
-    return view('pagemateri');
+// Route::get('/materi', function () {
+//     return view('pagemateri');
+Route::get('/{folderNama}', function ($folderNama) {
+    return view('pagemateri', ['folderNama' => $folderNama]);
 });
+Route::get('/{folderNama}', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
+
 Route::get('/file', function () {
     return view('filepage');
 });
@@ -42,8 +46,8 @@ Route::get('/home/cari',[HomeController::class, 'cari']);
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/materi', [PostController::class, 'index'])->name('post.index');
-Route::post('/materi', [PostController::class, 'store'])->name('post.store');
+Route::get('/pagemateri', [PostController::class, 'index'])->name('post.index');
+Route::post('/pagemateri', [PostController::class, 'store'])->name('post.store');
 
 
 Route::put('/post', [PostController::class, 'store'])->name('post.store');

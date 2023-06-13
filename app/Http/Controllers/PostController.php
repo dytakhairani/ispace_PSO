@@ -18,13 +18,13 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($folderNama)
     {
         //
-        $ecak = Post::all();
+        $ecak = Post::where('foldernama', $folderNama)->get();
 
         // Kirim data posting ke tampilan
-        return view('pagemateri', compact('ecak'));
+        return view('pagemateri', compact('ecak', 'folderNama'));
     }
 
     /**
@@ -59,6 +59,7 @@ class PostController extends Controller
         $post->material_type = $request->material_type;
         $post->material_description = $request->material_description;
         $post->owner = $request->owner;
+        $post->foldernama = $request->folderNama;
         $post->upload_file = $eca;
         $post->save();
 

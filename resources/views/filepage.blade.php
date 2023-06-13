@@ -28,7 +28,7 @@
 
     <div class="py-[50px]">
         <div class="bg-white w-[857px] h-[800px] mx-auto rounded-[20px] pl-[99px] pt-[41px]">
-            <h1 class="font-bold text-[32px] text-[#283D70] mb-[14px]">Matematika 1</h1>
+            <h1 class="font-bold text-[32px] text-[#283D70] mb-[14px]">{{$post->foldernama}}</h1>
             <p class="opacity-50 text-[#142F64] text-[12px] mb-[12px]">Published by {{ $post->owner }}
                 {{ $post->created_at }}
             </p>

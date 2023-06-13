@@ -47,7 +47,7 @@
     <div class="mx-[147px] py-[50px]">
 
         <div class="flex items-center flex-row justify-between">
-            <h1 class="text-[#283D70] ml-20 text-4xl font-semibold">Matematika 1</h1>
+            <h1 class="text-[#283D70] ml-20 text-4xl font-semibold">{{ $folderNama }}</h1>
             <div class=" shadow-md mr-20 rounded-full  shadow-black">
                 <!-- popup : start -->
                 <div x-data="{ open: false }">
@@ -91,6 +91,14 @@
                                         <input type="text" name="owner" id="owner"
                                             class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             value="{{ old('uploader', Auth::user()->name) }}" readonly>
+                                    </div>
+
+                                    <div>
+                                        <label for="folderNama"
+                                            class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Mata Kuliah :</label>
+                                        <input type="text" name="folderNama" id="folderNama"
+                                            class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            value="{{ $folderNama }}" readonly>
                                     </div>
 
                                     <div>

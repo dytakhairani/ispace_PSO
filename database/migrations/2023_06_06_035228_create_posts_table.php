@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('folderNama', 255);
             $table->string('file_name');
             $table->string('material_type');
             $table->text('material_description');

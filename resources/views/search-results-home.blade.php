@@ -44,7 +44,7 @@
                     <div class="swiper  swiper-container one">
                         <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
                             @foreach ($posts as $matkul)
-                                <a href="/materi"
+                                <a href="/{{ $matkul->folderNama }}"
                                     class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
                                     <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
                                         <img src="images/uwong.svg" alt="">
