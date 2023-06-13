@@ -51,11 +51,11 @@
             <div class=" shadow-md mr-20 rounded-full  shadow-black">
                 <!-- popup : start -->
                 <div x-data="{ open: false }">
-                    <img @click="open = true" class="transform transition duration-300 hover:scale-105 cursor-pointer"
+                    <img @click="open = true" class="transform transition duration-500 hover:scale-105 hover:rotate-45 cursor-pointer"
                         src="images/btn-add.svg" alt="">
                     <div x-show="open"
                         class=" fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                        <div class="bg-white rounded-[20px]  shadow-xl w-[676px] h-[640px]">
+                        <div class="bg-white rounded-[20px]  shadow-xl w-[676px] h-[660px]">
                             <!-- Form untuk posting ke database -->
                             <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -87,7 +87,7 @@
                                     <div>
                                         <label for="owner"
                                             class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Owner
-                                            Name:</label>
+                                            Name</label>
                                         <input type="text" name="owner" id="owner"
                                             class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             value="{{ old('uploader', Auth::user()->name) }}" readonly>
@@ -95,7 +95,7 @@
 
                                     <div>
                                         <label for="folderNama"
-                                            class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Mata Kuliah :</label>
+                                            class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Mata Kuliah</label>
                                         <input type="text" name="folderNama" id="folderNama"
                                             class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             value="{{ $folderNama }}" readonly>
@@ -104,13 +104,13 @@
                                     <div>
                                         <label for="file_name"
                                             class="block text-[#283D70] font-bold text-[16px] mb-[8px]">File
-                                            Name:</label>
+                                            Name</label>
                                         <input type="text" name="file_name" id="file_name"
                                             class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             required>
                                     </div>
 
-                                    <div class="mb-[16px]">
+                                    <div class="">
                                         <label for="material_type"
                                             class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Material
                                             Type</label>
@@ -122,7 +122,7 @@
                                             <option value="type3">Quiz</option>
                                         </select>
                                     </div>
-                                    <div class="mb-[16px]">
+                                    <div class="">
                                         <label for="material_description"
                                             class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Material
                                             Description</label>
@@ -154,9 +154,9 @@
                                     </div>
 
                                     <!---->
-                                    <div class="flex justify-end flex-col items-center mt-[40px]">
+                                    <div class="flex justify-end flex-col items-center mt-[25px]">
                                         <button type="submit"
-                                            class="px-4 py-2 w-[91.02px] bg-[#01AC49] opacity-50 rounded-[20px] text-white font-bold ">Send</button>
+                                            class="px-4 py-2 w-[150px] bg-[#01AC49] opacity-50 rounded-[20px] text-white font-bold ">Send</button>
                                     </div>
                                 </div>
 

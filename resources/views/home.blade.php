@@ -48,7 +48,7 @@
                                         <img src="images/uwong.svg" alt="">
                                     </div>
                                     <div class="flex ml-2 justify-start flex-col">
-                                        <h1 class="text-lg  text-[#283D70] mb-2 font-normal">{{ $matkul->folderNama }}
+                                        <h1 class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">{{ $matkul->folderNama }}
                                         </h1>
                                         <h1
                                             class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
@@ -87,7 +87,7 @@
     <!-- semester 2-->
     <div>
         <div>
-            <div class="w-[1153px] h-[270px]  mt-3 rounded-[30px] z-20 shadow-md bg-white px-[34px]">
+            <div class="w-[1153px] h-[270px] mt-[30px] rounded-[30px] z-20 shadow-md bg-white px-[34px]">
                 <div class="flex flex-row justify-around items-center pt-6">
                     <div
                         class="ring-1 ring-[#142F64] w-[106px] text-sm h-[27px] rounded-full flex justify-center items-center ml-[-15px]">
@@ -116,7 +116,7 @@
                                         <img src="images/uwong.svg" alt="">
                                     </div>
                                     <div class="flex ml-2 justify-start flex-col">
-                                        <h1 class="text-lg  text-[#283D70] mb-2 font-normal">{{ $matkul->folderNama }}
+                                        <h1 class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">{{ $matkul->folderNama }}
                                         </h1>
                                         <h1
                                             class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
@@ -155,7 +155,7 @@
     <!-- semester 3-->
     <div>
         <div>
-            <div class="w-[1153px] h-[270px]  mt-3 rounded-[30px] z-20 shadow-md bg-white px-[34px]">
+            <div class="w-[1153px] h-[270px] mt-[30px] rounded-[30px] z-20 shadow-md bg-white px-[34px]">
                 <div class="flex flex-row justify-around items-center pt-6">
                     <div
                         class="ring-1 ring-[#142F64] w-[106px] text-sm h-[27px] rounded-full flex justify-center items-center ml-[-15px]">
@@ -168,7 +168,7 @@
                         <a class="swiper-button-prev-unique-3 swiper-button-disabled" href="#">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
                         </a>
-                        <a class="swiper-button-next-unique-3" href="#">
+                        <a class="swiper-button-next-unique-3 swiper-button-disabled" href="#">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
                         </a>
                     </div>
@@ -184,7 +184,7 @@
                                         <img src="images/uwong.svg" alt="">
                                     </div>
                                     <div class="flex ml-2 justify-start flex-col">
-                                        <h1 class="text-lg  text-[#283D70] mb-2 font-normal">{{ $matkul->folderNama }}
+                                        <h1 class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">{{ $matkul->folderNama }}
                                         </h1>
                                         <h1
                                             class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
@@ -211,10 +211,7 @@
                     el: ".swiper-pagination-three",
                     clickable: true,
                 },
-                navigation: {
-                    nextEl: '.swiper-button-next-unique-3',
-                    prevEl: '.swiper-button-prev-unique-3'
-                }
+
 
             });
         </script>
@@ -224,7 +221,7 @@
     <!-- semester 4-->
     <div>
         <div>
-            <div class="w-[1153px] h-[270px]  mt-3 rounded-[30px] z-20 shadow-md bg-white px-[34px]">
+            <div class="w-[1153px] h-[270px] mt-[30px] rounded-[30px] z-20 shadow-md bg-white px-[34px]">
                 <div class="flex flex-row justify-around items-center pt-6">
                     <div
                         class="ring-1 ring-[#142F64] w-[106px] text-sm h-[27px] rounded-full flex justify-center items-center ml-[-15px]">
@@ -237,7 +234,7 @@
                         <a class="swiper-button-prev-unique-4 swiper-button-disabled" href="#">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
                         </a>
-                        <a class="swiper-button-next-unique-4" href="#">
+                        <a class="swiper-button-next-unique-4 swiper-button-disabled" href="#">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
                         </a>
                     </div>
@@ -253,7 +250,7 @@
                                         <img src="images/uwong.svg" alt="">
                                     </div>
                                     <div class="flex ml-2 justify-start flex-col">
-                                        <h1 class="text-lg  text-[#283D70] mb-2 font-normal">{{ $matkul->folderNama }}
+                                        <h1 class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">{{ $matkul->folderNama }}
                                         </h1>
                                         <h1
                                             class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
@@ -280,10 +277,7 @@
                     el: ".swiper-pagination-four",
                     clickable: true,
                 },
-                navigation: {
-                    nextEl: '.swiper-button-next-unique-4',
-                    prevEl: '.swiper-button-prev-unique-4'
-                }
+
 
             });
         </script>
@@ -293,7 +287,7 @@
     <!-- semester 5-->
     <div>
         <div>
-            <div class="w-[1153px] h-[270px]  mt-3 rounded-[30px] z-20 shadow-md bg-white px-[34px]">
+            <div class="w-[1153px] h-[270px] mt-[30px] rounded-[30px] z-20 shadow-md bg-white px-[34px]">
                 <div class="flex flex-row justify-around items-center pt-6">
                     <div
                         class="ring-1 ring-[#142F64] w-[106px] text-sm h-[27px] rounded-full flex justify-center items-center ml-[-15px]">
@@ -306,7 +300,7 @@
                         <a class="swiper-button-prev-unique-5 swiper-button-disabled" href="#">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
                         </a>
-                        <a class="swiper-button-next-unique-5" href="#">
+                        <a class="swiper-button-next-unique-5 swiper-button-disabled" href="#">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
                         </a>
                     </div>
@@ -322,7 +316,7 @@
                                         <img src="images/uwong.svg" alt="">
                                     </div>
                                     <div class="flex ml-2 justify-start flex-col">
-                                        <h1 class="text-lg  text-[#283D70] mb-2 font-normal">{{ $matkul->folderNama }}
+                                        <h1 class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">{{ $matkul->folderNama }}
                                         </h1>
                                         <h1
                                             class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
@@ -349,10 +343,6 @@
                     el: ".swiper-pagination-five",
                     clickable: true,
                 },
-                navigation: {
-                    nextEl: '.swiper-button-next-unique-5',
-                    prevEl: '.swiper-button-prev-unique-5'
-                }
 
             });
         </script>
@@ -362,7 +352,7 @@
     <!-- semester 6-->
     <div>
         <div>
-            <div class="w-[1153px] h-[270px]  mt-3 rounded-[30px] z-20 shadow-md bg-white px-[34px]">
+            <div class="w-[1153px] h-[270px] mt-[30px] rounded-[30px] z-20 shadow-md bg-white px-[34px]">
                 <div class="flex flex-row justify-around items-center pt-6">
                     <div
                         class="ring-1 ring-[#142F64] w-[106px] text-sm h-[27px] rounded-full flex justify-center items-center ml-[-15px]">
@@ -375,7 +365,7 @@
                         <a class="swiper-button-prev-unique-6 swiper-button-disabled" href="#">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
                         </a>
-                        <a class="swiper-button-next-unique-6" href="#">
+                        <a class="swiper-button-next-unique-6 swiper-button-disabled" href="#">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
                         </a>
                     </div>
@@ -391,7 +381,7 @@
                                         <img src="images/uwong.svg" alt="">
                                     </div>
                                     <div class="flex ml-2 justify-start flex-col">
-                                        <h1 class="text-lg  text-[#283D70] mb-2 font-normal">{{ $matkul->folderNama }}
+                                        <h1 class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">{{ $matkul->folderNama }}
                                         </h1>
                                         <h1
                                             class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
@@ -418,10 +408,6 @@
                     el: ".swiper-pagination-six",
                     clickable: true,
                 },
-                navigation: {
-                    nextEl: '.swiper-button-next-unique-6',
-                    prevEl: '.swiper-button-prev-unique-6'
-                }
 
             });
         </script>
