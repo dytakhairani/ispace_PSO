@@ -178,7 +178,7 @@
                                     </a>
                                 </th>
                                 <td class="px-6 py-4 ">
-                                    <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{ $p->folderNama }}
+                                    <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[130px]">{{ $p->folderNama }}
                                     </h1>
                                 </td>
                                 <td class="px-6 py-4 ">

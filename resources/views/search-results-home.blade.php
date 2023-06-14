@@ -50,7 +50,7 @@
                                         <img src="images/uwong.svg" alt="">
                                     </div>
                                     <div class="flex ml-2 justify-start flex-col">
-                                        <h1 class="text-lg  text-[#283D70] mb-2 font-normal">
+                                        <h1 class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">
                                             {{ $matkul->folderNama }}
                                         </h1>
                                         <h1
