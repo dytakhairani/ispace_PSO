@@ -95,9 +95,9 @@
                                         <select name="material_type" id="material_type"
                                             class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             required>
-                                            <option value="type1">Notes</option>
-                                            <option value="type2">Video</option>
-                                            <option value="type3">Quiz</option>
+                                            <option value="Notes">Notes</option>
+                                            <option value="Video">Video</option>
+                                            <option value="Quiz">Quiz</option>
                                         </select>
                                     </div>
                                     <div class="mb-4">
@@ -166,24 +166,99 @@
                                 <th scope="row"
                                     class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
                                     <img src="images/file-text-icon.svg" alt="">
-                                    <h1 class="mt-2">
-                                        {{ $p->file_name }}
-                                    </h1>
+                                    <a href="/page/{{ $p->id }}">
+                                        <h1 class="mt-2">
+                                            {{ $p->file_name }}
+                                        </h1>
+                                    </a>
                                 </th>
                                 <td class="px-6 py-4 ">
                                     <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{ $p->material_type }}
                                     </h1>
                                 </td>
                                 <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                                    <h1>{{ Auth::user()->name }}</h1>
+                                    <h1>{{ $p->owner }}</h1>
                                 </td>
                                 <td class="px-6 py-4 text-left text-[#7988a8] font-light">
                                     {{ $p->created_at }}
                                 </td>
                                 <td class="px-6  py-4 text-[#7988a8] relative  font-light">
                                     113 KB
-                                    <a href=""><i
-                                            class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i></a>
+                                    <div x-data="{ open: false }" class="relative">
+                                        <div @click="open = !open" class="  cursor-pointer">
+
+                                            <div x-show="!open" href=""><i
+                                                    class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                            </div>
+                                            <div x-show="open" href=""><i
+                                                    class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                            </div>
+                                        </div>
+
+                                        <ul x-show="open" @click.away="open = false"
+                                            class="absolute right-0 mt-2 py-2 w-48 bg-white rounded shadow-xl z-10">
+                                            <li>
+                                                <a id="downloadBtn" href="{{ url('/download/' . $p->id) }}"
+                                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
+                                                        class="fa fa-download"></i> Download
+                                                </a>
+                                            </li>
+                                            <div x-data="{ open: false }">
+                                                <li><a @click="open = true"
+                                                        class="transform transition duration-300 cursor-pointer
+                                                            block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
+                                                            class="fa fa-trash"></i> Delete</a>
+                                                    @if ((Auth::user()->name == $p->owner) || (Auth::user()->name == "Admin"))
+                                                    <div x-show="open"
+                                                        class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+                                                        <div class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
+                                                            <button @click="open = false"
+                                                                class="absolute right-[510px] top-[170px]">
+                                                                <!-- Tambahkan ikon close di sini, misalnya menggunakan font awesome -->
+                                                                <img src="images/close.png" alt="">
+                                                            </button>
+
+                                                            <h5
+                                                                class="text-[#283D70] font-bold text-[20px] mb-[35px] mt-[66px]">
+                                                                Delete File?</h5>
+                                                            <div
+                                                                class="mx-auto flex items-center justify-center w-[317.7px] h-[45.17px] bg-[#F8F1E9] rounded-[20px]">
+                                                                <p class="text-black text-[14px]">Are you sure you want to
+                                                                    delete?</p>
+                                                            </div>
+                                                            <div
+                                                                class="bg-[#68CE93] w-[78.96px] h-[26.47px] mx-auto rounded-[20px] flex justify-center items-center mt-[160.8px]">
+                                                                <a href="/materi/delete/{{ $p->id }}"
+                                                                    class="text-white font-bold text-[16px]">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @else
+                                                    <!--pop up bukan owner-->
+                                                    <div x-show="open"
+                                                    class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+                                                        <div class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
+                                                            <button @click="open = false"
+                                                                class="absolute right-[510px] top-[170px]">
+                                                                <!-- Tambahkan ikon close di sini, misalnya menggunakan font awesome -->
+                                                                <img src="images/close.png" alt="">
+                                                            </button>
+
+                                                            <h5
+                                                                class="text-[#283D70] font-bold text-[20px] mb-[35px] mt-[66px]">
+                                                                WARNING</h5>
+                                                            <div
+                                                                class="mx-auto flex items-center justify-center w-[317.7px] h-[45.17px] bg-[#F8F1E9] rounded-[20px]">
+                                                                <p class="text-black text-[14px]">Sorry you are not the owner of the file</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    @endif
+                                                </li>
+                                            </div>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                             </tr>

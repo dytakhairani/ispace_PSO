@@ -45,7 +45,6 @@
     </nav>
 
     <div class="mx-[147px] py-[50px]">
-
         <div class="flex items-center flex-row justify-between">
             <h1 class="text-[#283D70] ml-20 text-4xl font-semibold">Matematika 1</h1>
             <div class=" shadow-md mr-20 rounded-full  shadow-black">
@@ -109,9 +108,9 @@
                                         <select name="material_type" id="material_type"
                                             class="w-full bg-[#F8F1E9] h-[39px] rounded-[20px] px-3 py-2 border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             required>
-                                            <option value="type1">Notes</option>
-                                            <option value="type2">Video</option>
-                                            <option value="type3">Quiz</option>
+                                            <option value="Notes">Notes</option>
+                                            <option value="Video">Video</option>
+                                            <option value="Quiz">Quiz</option>
                                         </select>
                                     </div>
                                     <div class="mb-[16px]">
@@ -198,7 +197,6 @@
                 @foreach ($ecak as $post)
                     <tbody>
                         <tr class="bg-white">
-
                             <th scope="row"
                                 class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
                                 <img src="images/file-text-icon.svg" alt="">
@@ -244,6 +242,7 @@
                                                     class="transform transition duration-300 cursor-pointer
                                                         block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
                                                         class="fa fa-trash"></i> Delete</a>
+                                                @if ((Auth::user()->name == $post->owner) || (Auth::user()->name == "Admin"))
                                                 <div x-show="open"
                                                     class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
                                                     <div class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
@@ -268,9 +267,31 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @else
+                                                <!--pop up bukan owner-->
+                                                <div x-show="open"
+                                                class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+                                                    <div class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
+                                                        <button @click="open = false"
+                                                            class="absolute right-[510px] top-[170px]">
+                                                            <!-- Tambahkan ikon close di sini, misalnya menggunakan font awesome -->
+                                                            <img src="images/close.png" alt="">
+                                                        </button>
 
+                                                        <h5
+                                                            class="text-[#283D70] font-bold text-[20px] mb-[35px] mt-[66px]">
+                                                            WARNING</h5>
+                                                        <div
+                                                            class="mx-auto flex items-center justify-center w-[317.7px] h-[45.17px] bg-[#F8F1E9] rounded-[20px]">
+                                                            <p class="text-black text-[14px]">Sorry you are not the owner of the file</p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                @endif
                                             </li>
                                         </div>
+                                    </ul>
                                 </div>
                             </td>
                         </tr>
