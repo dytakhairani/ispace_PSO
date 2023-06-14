@@ -42,7 +42,7 @@
                     <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
                         @foreach ($folder as $matkul)
                             @if ($matkul->folderSemester == 1)
-                                <a href="/{{ $matkul->folderNama }}"
+                                <a href="/m{{ $matkul->folderNama }}"
                                     class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
                                     <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
                                         <img src="images/uwong.svg" alt="">
@@ -110,7 +110,7 @@
                     <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
                         @foreach ($folder as $matkul)
                             @if ($matkul->folderSemester == 2)
-                                <a href="/{{ $matkul->folderNama }}"
+                                <a href="/m{{ $matkul->folderNama }}"
                                     class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
                                     <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
                                         <img src="images/uwong.svg" alt="">
@@ -178,7 +178,7 @@
                     <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
                         @foreach ($folder as $matkul)
                             @if ($matkul->folderSemester == 3)
-                                <a href="/{{ $matkul->folderNama }}"
+                                <a href="/m{{ $matkul->folderNama }}"
                                     class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
                                     <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
                                         <img src="images/uwong.svg" alt="">
@@ -244,7 +244,7 @@
                     <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
                         @foreach ($folder as $matkul)
                             @if ($matkul->folderSemester == 4)
-                                <a href="/{{ $matkul->folderNama }}"
+                                <a href="/m{{ $matkul->folderNama }}"
                                     class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
                                     <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
                                         <img src="images/uwong.svg" alt="">
@@ -310,7 +310,7 @@
                     <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
                         @foreach ($folder as $matkul)
                             @if ($matkul->folderSemester == 5)
-                                <a href="/{{ $matkul->folderNama }}"
+                                <a href="/m{{ $matkul->folderNama }}"
                                     class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
                                     <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
                                         <img src="images/uwong.svg" alt="">
@@ -375,7 +375,7 @@
                     <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
                         @foreach ($folder as $matkul)
                             @if ($matkul->folderSemester == 6)
-                                <a href="/{{ $matkul->folderNama }}"
+                                <a href="/m{{ $matkul->folderNama }}"
                                     class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
                                     <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
                                         <img src="images/uwong.svg" alt="">

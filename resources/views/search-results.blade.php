@@ -74,7 +74,7 @@
                             class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
                             <div class="bg-white p-6 rounded shadow-xl">
                                 <!-- Form untuk posting ke database -->
-                                <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                                {{-- <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     {{-- @foreach ($posts as $post)
@@ -118,7 +118,7 @@
                                         <button type="submit"
                                             class="px-4 py-2 bg-blue-500 text-white font-bold rounded">Send</button>
                                     </div>
-                                </form>
+                                </form> --}}
                             </div>
                         </div>
                     </div>
@@ -140,6 +140,10 @@
                             <th scope="col"
                                 class="pl-24 text-left w-64 pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
                                 File Name
+                            </th>
+                            <th scope="col"
+                                class="w-32 px-6  pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
+                                Mata Kuliah
                             </th>
                             <th scope="col"
                                 class="w-32 px-6  pb-3 font-normal text-lg text-[#283D70] relative pt-[30px]">
@@ -173,6 +177,10 @@
                                         </h1>
                                     </a>
                                 </th>
+                                <td class="px-6 py-4 ">
+                                    <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{ $p->folderNama }}
+                                    </h1>
+                                </td>
                                 <td class="px-6 py-4 ">
                                     <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{ $p->material_type }}
                                     </h1>

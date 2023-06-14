@@ -32,10 +32,10 @@ Route::get('/', function () {
 });
 // Route::get('/materi', function () {
 //     return view('pagemateri');
-Route::get('/{folderNama}', function ($folderNama) {
+Route::get('/m{folderNama}', function ($folderNama) {
     return view('pagemateri', ['folderNama' => $folderNama]);
 });
-Route::get('/{folderNama}', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
+Route::get('/m{folderNama}', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
 
 Route::get('/file', function () {
     return view('filepage');
