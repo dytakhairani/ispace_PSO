@@ -225,7 +225,7 @@
                                 {{ $post->created_at }}
                             </td>
                             <td class="px-6  py-4 text-[#7988a8] relative  font-light">
-                                113 KB
+                                {{ $post->fileSize }}
                                 <div x-data="{ open: false }" class="relative">
                                     <div @click="open = !open" class="  cursor-pointer">
 

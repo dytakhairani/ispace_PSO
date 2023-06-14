@@ -48,11 +48,16 @@ class PostController extends Controller
         ]);
 
 
-       //biar dpt file name aslinya
+        //biar dpt file name aslinya
         $eca= $request->file('upload_file')->getClientOriginalName();
+        $ecak= $request->file('upload_file')->getSize();
+        // Konversi ukuran file ke format yang lebih mudah dibaca
+        $formattedSize = $this->formatFileSize($ecak);
         //move ke directory lain
         $uploadDir = 'public/uploads';
         $path = $request ->file('upload_file')->storeAs($uploadDir,$eca);
+        // Dapatkan ukuran file dalam byte
+
          // Simpan data ke database
         $post = new Post;
         $post->file_name = $request->file_name;
@@ -61,12 +66,29 @@ class PostController extends Controller
         $post->owner = $request->owner;
         $post->foldernama = $request->folderNama;
         $post->upload_file = $eca;
+        $post->fileSize = $formattedSize; // Menyimpan ukuran file
+
         $post->save();
 
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Post created successfully!');
 
 
+    }
+
+    /**
+     * Fungsi untuk mengonversi ukuran file dalam byte menjadi format yang lebih mudah dibaca (MB, GB, dsb.)
+     *
+     * @param int $size Ukuran file dalam byte
+     * @param int $precision Jumlah digit desimal yang diinginkan
+     * @return string Ukuran file yang diformat
+     */
+    private function formatFileSize($size, $precision = 2)
+    {
+        $base = log($size, 1024);
+        $suffixes = array('B', 'KB', 'MB', 'GB', 'TB');
+
+        return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
     }
 
     /**
