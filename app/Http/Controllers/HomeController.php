@@ -41,6 +41,7 @@ class HomeController extends Controller
 	{
 		// menangkap data pencarian
 		$cari = $request->input('keyword');
+        $user = Auth::user();
 
     		// mengambil data dari table pegawai sesuai pencarian data
 		$posts = DB::table('folder')
@@ -48,7 +49,7 @@ class HomeController extends Controller
         ->get();
 
     		// mengirim data pegawai ke view index
-		return view('search-results-home', compact('posts'));
+		return view('search-results-home', compact('user','posts'));
 
 	}
 }
