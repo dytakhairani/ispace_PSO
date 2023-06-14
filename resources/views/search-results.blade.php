@@ -67,9 +67,9 @@
                 <div class=" shadow-md mr-20 rounded-full  shadow-black">
                     <!-- popup : start -->
                     <div x-data="{ open: false }">
-                        <img @click="open = true"
+                        {{-- <img @click="open = true"
                             class="transform transition duration-300 hover:scale-105 cursor-pointer"
-                            src="images/btn-add.svg" alt="">
+                            src="images/btn-add.svg" alt=""> --}}
                         <div x-show="open"
                             class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
                             <div class="bg-white p-6 rounded shadow-xl">
@@ -170,7 +170,7 @@
                             <tr class="bg-white">
                                 <th scope="row"
                                     class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
-                                    <img src="images/file-text-icon.svg" alt="">
+                                    <img src={{asset('images/file-text-icon.svg')}} alt="">
                                     <a href="/page/{{ $p->id }}">
                                         <h1 class="mt-2">
                                             {{ $p->file_name }}
@@ -192,15 +192,15 @@
                                     {{ $p->created_at }}
                                 </td>
                                 <td class="px-6  py-4 text-[#7988a8] relative  font-light">
-                                    113 KB
+                                    {{ $p->fileSize }}
                                     <div x-data="{ open: false }" class="relative">
                                         <div @click="open = !open" class="  cursor-pointer">
 
                                             <div x-show="!open" href=""><i
-                                                    class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                                    class="fa-solid absolute bottom-[39%] left-[80%] fa-ellipsis-vertical"></i>
                                             </div>
                                             <div x-show="open" href=""><i
-                                                    class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                                    class="fa-solid absolute bottom-[39%] left-[80%] fa-ellipsis-vertical"></i>
                                             </div>
                                         </div>
 

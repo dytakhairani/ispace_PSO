@@ -165,10 +165,10 @@
                         <hr class="bg-[#DADADA] h-1">
                     </div>
                     <div class="flex gap-4 mr-[-15px]">
-                        <a class="swiper-button-prev-unique-3 swiper-button-disabled" href="#">
+                        <a class="swiper-button-prev-unique-3 swiper-button-disabled cursor-default">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
                         </a>
-                        <a class="swiper-button-next-unique-3 swiper-button-disabled" href="#">
+                        <a class="swiper-button-next-unique-3 swiper-button-disabled cursor-default">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
                         </a>
                     </div>
@@ -231,10 +231,10 @@
                         <hr class="bg-[#DADADA] h-1">
                     </div>
                     <div class="flex gap-4 mr-[-15px]">
-                        <a class="swiper-button-prev-unique-4 swiper-button-disabled" href="#">
+                        <a class="swiper-button-prev-unique-4 swiper-button-disabled cursor-default">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
                         </a>
-                        <a class="swiper-button-next-unique-4 swiper-button-disabled" href="#">
+                        <a class="swiper-button-next-unique-4 swiper-button-disabled cursor-default">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
                         </a>
                     </div>
@@ -297,10 +297,10 @@
                         <hr class="bg-[#DADADA] h-1">
                     </div>
                     <div class="flex gap-4 mr-[-15px]">
-                        <a class="swiper-button-prev-unique-5 swiper-button-disabled" href="#">
+                        <a class="swiper-button-prev-unique-5 swiper-button-disabled cursor-default">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
                         </a>
-                        <a class="swiper-button-next-unique-5 swiper-button-disabled" href="#">
+                        <a class="swiper-button-next-unique-5 swiper-button-disabled cursor-default">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
                         </a>
                     </div>
@@ -362,10 +362,10 @@
                         <hr class="bg-[#DADADA] h-1">
                     </div>
                     <div class="flex gap-4 mr-[-15px]">
-                        <a class="swiper-button-prev-unique-6 swiper-button-disabled" href="#">
+                        <a class="swiper-button-prev-unique-6 swiper-button-disabled cursor-default">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
                         </a>
-                        <a class="swiper-button-next-unique-6 swiper-button-disabled" href="#">
+                        <a class="swiper-button-next-unique-6 swiper-button-disabled cursor-default">
                             <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
                         </a>
                     </div>

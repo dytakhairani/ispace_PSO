@@ -230,10 +230,10 @@
                                     <div @click="open = !open" class="  cursor-pointer">
 
                                         <div x-show="!open" href=""><i
-                                                class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                                class="fa-solid absolute bottom-[39%] left-[80%] fa-ellipsis-vertical"></i>
                                         </div>
                                         <div x-show="open" href=""><i
-                                                class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
+                                                class="fa-solid absolute bottom-[39%] left-[80%] fa-ellipsis-vertical"></i>
                                         </div>
                                     </div>
 
