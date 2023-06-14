@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Folder;
 use Illuminate\Support\Facades\DB;
 
@@ -25,13 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        return view('home', compact('user'));
     }
 
     public function matkul()
     {
+        $user = Auth::user();
         $folder = Folder::whereIn('folderSemester', [1, 2, 3, 4, 5, 6])->get();
-        return view('home', compact('folder'));
+        return view('home', compact('user','folder'));
     }
 
     public function cari(Request $request)

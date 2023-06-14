@@ -78,6 +78,7 @@ class ProfileController extends Controller
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
             'nrp' => ['required', 'numeric', 'digits_between:1,20'],
             'date' => ['required', 'date'],
+            'image' => ['nullable', 'image', 'max:2048'],
         ]);
 
         $user->name = $request->name;
@@ -89,6 +90,11 @@ class ProfileController extends Controller
             $user->password = Hash::make($request->password);
         }
 
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imagePath = $image->store('profile_images', 'public'); // Menyimpan gambar ke direktori 'storage/app/public/profile_images'
+            $user->image = $imagePath;
+        }
         $user->save();
 
         return redirect()->route('profile.show')->with('success', 'Profil berhasil diperbarui.');

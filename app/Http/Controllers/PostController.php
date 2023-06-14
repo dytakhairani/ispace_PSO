@@ -8,7 +8,7 @@ use App\Models\Post;
 use Illuminate\View\View;
 //return type redirectResponse
 use Illuminate\Http\RedirectResponse;
-
+use Illuminate\Support\Facades\Auth;
 //import Facade "Storage"
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -21,10 +21,11 @@ class PostController extends Controller
     public function index($folderNama)
     {
         //
+        $user = Auth::user();
         $ecak = Post::where('foldernama', $folderNama)->get();
 
         // Kirim data posting ke tampilan
-        return view('pagemateri', compact('ecak', 'folderNama'));
+        return view('pagemateri', compact('user', 'ecak', 'folderNama'));
     }
 
     /**
@@ -97,10 +98,11 @@ class PostController extends Controller
     public function show(string $id): View
     {
         //get post by ID
+        $user = Auth::user();
         $post = Post::findOrFail($id);
 
         //render view with post
-        return view('filepage', compact('post'));
+        return view('filepage', compact('post','user'));
 
     }
 
@@ -152,14 +154,14 @@ class PostController extends Controller
 	{
 		// menangkap data pencarian
 		$cari = $request->input('keyword');
-
+        $user = Auth::user();
     		// mengambil data dari table pegawai sesuai pencarian data
 		$posts = DB::table('posts')
 		->where('file_name','like',"%".$cari."%")
         ->get();
 
     		// mengirim data pegawai ke view index
-		return view('search-results', compact('posts'));
+		return view('search-results', compact('user','posts'));
 
 	}
 

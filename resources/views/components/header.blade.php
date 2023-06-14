@@ -43,8 +43,8 @@
 
                     </ul>
                     <form class="form-inline my-2 my-lg-0 "action="/materi/cari" method="GET" style="width: 449px">
-                        <input class="form-control mr-sm-2"
-                            placeholder="What lesson do you want to find? " type="text" name="keyword">
+                        <input class="form-control mr-sm-2" placeholder="What lesson do you want to find? "
+                            type="text" name="keyword">
                         {{-- <i class="bi bi-search "></i> --}}
                     </form>
 
@@ -64,11 +64,20 @@
                                 </li>
                             @endif
                         @else
-                            <a id="userDropdown" class="nav-link dropdown-toggle rounded-circle"
-                                style="width: 30px; height: 30px; background-color: #FFFFFF" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="bi bi-person"></i> <!-- Menggunakan ikon person dari Bootstrap Icons -->
-                            </a>
+                            @if ($user->image && $user->image !== 'user.png')
+                                <a id="userDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img id="img-preview" src="{{ asset('storage/' . $user->image) }}"
+                                        class="rounded-circle" style="width: 40px; height:40px;" alt="">
+                                </a>
+                            @else
+                                <a id="userDropdown" class="nav-link dropdown-toggle rounded-circle"
+                                    style="width: 30px; height: 30px; background-color: #FFFFFF" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    v-pre>
+                                    <i class="bi bi-person"></i> <!-- Menggunakan ikon person dari Bootstrap Icons -->
+                                </a>
+                            @endif
 
                             <li class="nav-item dropdown ">
 
@@ -78,7 +87,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/profile">
                                         {{ __('Profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
