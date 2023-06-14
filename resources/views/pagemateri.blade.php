@@ -50,13 +50,15 @@
             <div class=" shadow-md mr-20 rounded-full  shadow-black">
                 <!-- popup : start -->
                 <div x-data="{ open: false }">
-                    <img @click="open = true" class="transform transition duration-500 hover:scale-105 hover:rotate-45 cursor-pointer"
+                    <img @click="open = true"
+                        class="transform transition duration-500 hover:scale-105 hover:rotate-45 cursor-pointer"
                         src="images/btn-add.svg" alt="">
                     <div x-show="open"
                         class=" fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
                         <div class="bg-white rounded-[20px]  shadow-xl w-[676px] h-[660px]">
                             <!-- Form untuk posting ke database -->
-                            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                            <form id="myForm" action="{{ route('post.store') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 {{-- @foreach ($posts as $post)
@@ -94,7 +96,8 @@
 
                                     <div>
                                         <label for="folderNama"
-                                            class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Mata Kuliah</label>
+                                            class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Mata
+                                            Kuliah</label>
                                         <input type="text" name="folderNama" id="folderNama"
                                             class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                             value="{{ $folderNama }}" readonly>
@@ -105,8 +108,7 @@
                                             class="block text-[#283D70] font-bold text-[16px] mb-[8px]">File
                                             Name</label>
                                         <input type="text" name="file_name" id="file_name"
-                                            class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                            required>
+                                            class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                     </div>
 
                                     <div class="">
@@ -114,8 +116,7 @@
                                             class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Material
                                             Type</label>
                                         <select name="material_type" id="material_type"
-                                            class="w-full bg-[#F8F1E9] h-[39px] rounded-[20px] px-3 py-2 border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                            required>
+                                            class="w-full bg-[#F8F1E9] h-[39px] rounded-[20px] px-3 py-2 border  focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                             <option value="Notes">Notes</option>
                                             <option value="Video">Video</option>
                                             <option value="Quiz">Quiz</option>
@@ -126,8 +127,7 @@
                                             class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Material
                                             Description</label>
                                         <textarea name="material_description" id="material_description" rows="3"
-                                            class="w-full bg-[#F8F1E9] h-[69px] rounded-[20px] px-3 py-2 border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                            required></textarea>
+                                            class="w-full bg-[#F8F1E9] h-[69px] rounded-[20px] px-3 py-2 border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
                                     </div>
                                     <div class="mb-[8px]">
                                         <label for="upload_file"
@@ -144,22 +144,94 @@
                                             class="flex flex-col items-center justify-center w-full h-[69px] border-2 rounded-[20px] bg-[#F8F1E9]">
                                             <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                                 <img src="images/file-upload.png" alt="">
-                                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-[12px]">
+                                                <p class="mb-1 text-sm text-gray-500 dark:text-gray-400 text-[12px]">
                                                     <span class="font-semibold">Input your file
                                                 </p>
+                                                <span class="text-sm text-gray-500 dark:text-gray-400 text-[12px]" id="test2">SVG, PNG, JPG or GIF, etc</span>
                                             </div>
-                                            <input name="upload_file" id="upload_file" type="file" class="hidden" />
+                                            <input name="upload_file" id="upload_file" type="file"
+                                                class="hidden" />
                                         </label>
+                                        <script>
+                                            let file = document.querySelector('#upload_file');
+                                            let test2 = document.querySelector('#test2');
+
+                                            file.addEventListener('change', function(e) {
+                                                test2.innerHTML = e.target.files[0].name;
+                                            });
+                                        </script>
                                     </div>
 
                                     <!---->
                                     <div class="flex justify-end flex-col items-center mt-[25px]">
-                                        <button type="submit"
+                                        <button id="submitBtn" type="submit"
                                             class="px-4 py-2 w-[150px] bg-[#01AC49] opacity-50 rounded-[20px] text-white font-bold ">Send</button>
                                     </div>
                                 </div>
+                                <div id="modal"
+                                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+                                    <div class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
+                                        <h5
+                                            class="text-[#283D70] font-bold text-[20px] mb-[35px] mt-[66px] text-center">
+                                            WARNING</h5>
+                                        <div
+                                            class="mx-auto flex items-center justify-center w-[317.7px] h-[45.17px] bg-[#F8F1E9] rounded-[20px]">
+                                            <p class="text-black text-[14px]">Please fill all the column before submit!
+                                            </p>
+                                        </div>
+                                        <button id="closeModal" class="absolute right-[510px] top-[170px]"
+                                            type="button">
+                                            <img src="images/close.png" alt="">
+                                        </button>
+                                    </div>
+                                </div>
 
+                                <script>
+                                    const form = document.getElementById('myForm');
+                                    const submitBtn = document.getElementById('submitBtn');
+                                    const modal = document.getElementById('modal');
+                                    const closeModal = document.getElementById('closeModal');
+
+                                    form.addEventListener('submit', function(e) {
+                                        e.preventDefault();
+
+                                        const name = document.getElementById('file_name').value;
+                                        const email = document.getElementById('material_description').value;
+                                        const message = document.getElementById('upload_file').value;
+
+                                        if (name === '' || email === '' || message === '') {
+                                            modal.style.display = 'flex';
+                                        } else {
+                                            // Lakukan aksi lain, seperti mengirim data ke server
+                                            // console.log('Form submitted');
+                                            // form.reset();
+                                            const formData = new FormData(form);
+
+                                            // Kirim data ke endpoint menggunakan metode POST
+                                            fetch("{{ route('post.store') }}", {
+                                                    method: "POST",
+                                                    body: formData
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    console.log("Data successfully submitted", data);
+                                                    form.reset();
+                                                    open = false;
+                                                    document.getElementById('popup').style.display = 'none';
+                                                })
+                                                .catch(error => {
+                                                    console.error("Error:", error);
+                                                });
+                                        }
+                                    });
+
+                                    closeModal.addEventListener('click', function() {
+                                        modal.style.display = 'none';
+                                    });
+                                </script>
                             </form>
+
+
                         </div>
                     </div>
 
@@ -250,52 +322,56 @@
                                                     class="transform transition duration-300 cursor-pointer
                                                         block px-4 py-2 text-gray-800 hover:bg-gray-200"><i
                                                         class="fa fa-trash"></i> Delete</a>
-                                                @if ((Auth::user()->name == $post->owner) || (Auth::user()->name == "Admin"))
-                                                <div x-show="open"
-                                                    class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                                                    <div class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
-                                                        <button @click="open = false"
-                                                            class="absolute right-[510px] top-[170px]">
-                                                            <!-- Tambahkan ikon close di sini, misalnya menggunakan font awesome -->
-                                                            <img src="images/close.png" alt="">
-                                                        </button>
+                                                @if (Auth::user()->name == $post->owner || Auth::user()->name == 'Admin')
+                                                    <div x-show="open"
+                                                        class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+                                                        <div
+                                                            class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
+                                                            <button @click="open = false"
+                                                                class="absolute right-[510px] top-[170px]">
+                                                                <!-- Tambahkan ikon close di sini, misalnya menggunakan font awesome -->
+                                                                <img src="images/close.png" alt="">
+                                                            </button>
 
-                                                        <h5
-                                                            class="text-[#283D70] font-bold text-[20px] mb-[35px] mt-[66px]">
-                                                            Delete File?</h5>
-                                                        <div
-                                                            class="mx-auto flex items-center justify-center w-[317.7px] h-[45.17px] bg-[#F8F1E9] rounded-[20px]">
-                                                            <p class="text-black text-[14px]">Are you sure you want to
-                                                                delete?</p>
-                                                        </div>
-                                                        <div
-                                                            class="bg-[#68CE93] w-[78.96px] h-[26.47px] mx-auto rounded-[20px] flex justify-center items-center mt-[160.8px]">
-                                                            <a href="/materi/delete/{{ $post->id }}"
-                                                                class="text-white font-bold text-[16px]">Delete</a>
+                                                            <h5
+                                                                class="text-[#283D70] font-bold text-[20px] mb-[35px] mt-[66px]">
+                                                                Delete File?</h5>
+                                                            <div
+                                                                class="mx-auto flex items-center justify-center w-[317.7px] h-[45.17px] bg-[#F8F1E9] rounded-[20px]">
+                                                                <p class="text-black text-[14px]">Are you sure you want
+                                                                    to
+                                                                    delete?</p>
+                                                            </div>
+                                                            <div
+                                                                class="bg-[#68CE93] w-[78.96px] h-[26.47px] mx-auto rounded-[20px] flex justify-center items-center mt-[160.8px]">
+                                                                <a href="/materi/delete/{{ $post->id }}"
+                                                                    class="text-white font-bold text-[16px]">Delete</a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                                 @else
-                                                <!--pop up bukan owner-->
-                                                <div x-show="open"
-                                                class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                                                    <div class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
-                                                        <button @click="open = false"
-                                                            class="absolute right-[510px] top-[170px]">
-                                                            <!-- Tambahkan ikon close di sini, misalnya menggunakan font awesome -->
-                                                            <img src="images/close.png" alt="">
-                                                        </button>
-
-                                                        <h5
-                                                            class="text-[#283D70] font-bold text-[20px] mb-[35px] mt-[66px]">
-                                                            WARNING</h5>
+                                                    <!--pop up bukan owner-->
+                                                    <div x-show="open"
+                                                        class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
                                                         <div
-                                                            class="mx-auto flex items-center justify-center w-[317.7px] h-[45.17px] bg-[#F8F1E9] rounded-[20px]">
-                                                            <p class="text-black text-[14px]">Sorry you are not the owner of the file</p>
-                                                        </div>
+                                                            class="bg-white w-[433px] h-[379px] rounded-[20px] shadow-xl">
+                                                            <button @click="open = false"
+                                                                class="absolute right-[510px] top-[170px]">
+                                                                <!-- Tambahkan ikon close di sini, misalnya menggunakan font awesome -->
+                                                                <img src="images/close.png" alt="">
+                                                            </button>
 
+                                                            <h5
+                                                                class="text-[#283D70] font-bold text-[20px] mb-[35px] mt-[66px]">
+                                                                WARNING</h5>
+                                                            <div
+                                                                class="mx-auto flex items-center justify-center w-[317.7px] h-[45.17px] bg-[#F8F1E9] rounded-[20px]">
+                                                                <p class="text-black text-[14px]">Sorry you are not the
+                                                                    owner of the file</p>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 @endif
                                             </li>
                                         </div>
