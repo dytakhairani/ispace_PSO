@@ -37,7 +37,7 @@
                 class="border-solid border-2 border-[#142F64] border-opacity-40 rounded-[16px] w-[88px] h-[20px] mb-[17px]">
                 <p class="text-center font-medium text-[10px]">Semester 1</p>
             </div>
-
+            <p class="opacity-80 text-[#142F64] text-[14px] mb-[12px]">{{ $post->material_description }}</p>
             <div>
                 <iframe
                     class="mb-[49px] w-[579px] h-[421px] shadow-xl rounded-[31px] border-solid border-2 border-[#142F64]"

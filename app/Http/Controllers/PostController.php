@@ -116,7 +116,7 @@ class PostController extends Controller
         //get post by ID
         $post = Post::findOrFail($id);
 
-        //delete image
+        //delete post
         Storage::delete('storage/uploads/'.$post->upload_file);
 
         //delete post
