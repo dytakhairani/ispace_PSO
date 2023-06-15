@@ -196,10 +196,10 @@
                                         var upload_file = document.getElementById('upload_file');
                                         if (owner.value === '' || folderNama.value === '' || file_name.value === '' || material_type.value === '' ||
                                             material_description.value === '' || upload_file.value === '') {
-                                            showModal(); // Tampilkan pop-up jika file tidak dipilih
-                                            return false; // Tidak dapat disubmit jika file tidak dipilih
+                                            showModal();
+                                            return false;
                                         }
-                                        return true; // Boleh disubmit jika input valid
+                                        return true;
                                     }
 
                                     function showModal() {
