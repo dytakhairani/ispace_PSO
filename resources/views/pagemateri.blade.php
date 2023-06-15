@@ -57,8 +57,8 @@
                         class=" fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
                         <div class="bg-white rounded-[20px]  shadow-xl w-[676px] h-[660px]">
                             <!-- Form untuk posting ke database -->
-                            <form id="myForm" action="{{ route('post.store') }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form id="formupload" action="{{ route('post.store') }}" method="POST"
+                                enctype="multipart/form-data" onsubmit="return validateForm()">
                                 @csrf
                                 @method('PUT')
                                 {{-- @foreach ($posts as $post)
@@ -147,7 +147,8 @@
                                                 <p class="mb-1 text-sm text-gray-500 dark:text-gray-400 text-[12px]">
                                                     <span class="font-semibold">Input your file
                                                 </p>
-                                                <span class="text-sm text-gray-500 dark:text-gray-400 text-[12px]" id="test2">SVG, PNG, JPG or GIF, etc</span>
+                                                <span class="text-sm text-gray-500 dark:text-gray-400 text-[12px]"
+                                                    id="test2">SVG, PNG, JPG or GIF, etc</span>
                                             </div>
                                             <input name="upload_file" id="upload_file" type="file"
                                                 class="hidden" />
@@ -164,7 +165,7 @@
 
                                     <!---->
                                     <div class="flex justify-end flex-col items-center mt-[25px]">
-                                        <button id="submitBtn" type="submit"
+                                        <button id="submit" type="submit"
                                             class="px-4 py-2 w-[150px] bg-[#01AC49] opacity-50 rounded-[20px] text-white font-bold ">Send</button>
                                     </div>
                                 </div>
@@ -185,53 +186,36 @@
                                         </button>
                                     </div>
                                 </div>
-
                                 <script>
-                                    const form = document.getElementById('myForm');
-                                    const submitBtn = document.getElementById('submitBtn');
-                                    const modal = document.getElementById('modal');
-                                    const closeModal = document.getElementById('closeModal');
-
-                                    form.addEventListener('submit', function(e) {
-                                        e.preventDefault();
-
-                                        const name = document.getElementById('file_name').value;
-                                        const email = document.getElementById('material_description').value;
-                                        const message = document.getElementById('upload_file').value;
-
-                                        if (name === '' || email === '' || message === '') {
-                                            modal.style.display = 'flex';
-                                        } else {
-                                            // Lakukan aksi lain, seperti mengirim data ke server
-                                            // console.log('Form submitted');
-                                            // form.reset();
-                                            const formData = new FormData(form);
-
-                                            // Kirim data ke endpoint menggunakan metode POST
-                                            fetch("{{ route('post.store') }}", {
-                                                    method: "POST",
-                                                    body: formData
-                                                })
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    console.log("Data successfully submitted", data);
-                                                    form.reset();
-                                                    open = false;
-                                                    document.getElementById('popup').style.display = 'none';
-                                                })
-                                                .catch(error => {
-                                                    console.error("Error:", error);
-                                                });
+                                    function validateForm() {
+                                        var owner = document.getElementById('owner');
+                                        var folderNama = document.getElementById('folderNama');
+                                        var file_name = document.getElementById('file_name');
+                                        var material_type = document.getElementById('material_type');
+                                        var material_description = document.getElementById('material_description');
+                                        var upload_file = document.getElementById('upload_file');
+                                        if (owner.value === '' || folderNama.value === '' || file_name.value === '' || material_type.value === '' ||
+                                            material_description.value === '' || upload_file.value === '') {
+                                            showModal(); // Tampilkan pop-up jika file tidak dipilih
+                                            return false; // Tidak dapat disubmit jika file tidak dipilih
                                         }
-                                    });
+                                        return true; // Boleh disubmit jika input valid
+                                    }
 
-                                    closeModal.addEventListener('click', function() {
-                                        modal.style.display = 'none';
-                                    });
+                                    function showModal() {
+                                        var modal = document.getElementById('modal');
+                                        modal.classList.remove('hidden');
+                                    }
+
+                                    function closeModal() {
+                                        var modal = document.getElementById('modal');
+                                        modal.classList.add('hidden');
+                                    }
+
+                                    var closeModalButton = document.getElementById('closeModal');
+                                    closeModalButton.addEventListener('click', closeModal);
                                 </script>
                             </form>
-
-
                         </div>
                     </div>
 
