@@ -61,12 +61,6 @@
                                 enctype="multipart/form-data" onsubmit="return validateForm()">
                                 @csrf
                                 @method('PUT')
-                                {{-- @foreach ($posts as $post)
-                                    <h2>{{ $post->file_name }}</h2>
-                                    <p>{{ $post->material_type }}</p>
-                                    <p>{{ $post->material_description }}</p>
-                                    <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
-                                @endforeach --}}
                                 <div class=" pr-[44.8px]">
                                     <div class="flex flex-row">
                                         <img src="{{ asset('images/material.png') }}"
@@ -372,9 +366,6 @@
         <!-- alert -->
 
         <div>
-            {{-- <button id="downloadBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ">
-                Download
-            </button> --}}
 
             <script>
                 document.getElementById("downloadBtn").addEventListener("click", function() {
@@ -394,15 +385,8 @@
                     image.alt = "";
 
                     var message = document.createElement("h1");
-                    message.textContent = "“Bilangan Kompleks” telah berhasil diunduh";
+                    message.textContent = "File telah berhasil diunduh";
 
-                    // var closeButton = document.createElement("button");
-                    // closeButton.className = "ml-auto mt-[-50px] p-2 rounded-full hover:bg-gray-200";
-                    // closeButton.innerHTML =
-                    //     '<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1zm5.9 14.7a1 1 0 0 1-1.4 1.4L12 13.42l-4.5 4.5a1 1 0 1 1-1.4-1.42l4.5-4.5-4.5-4.5a1 1 0 0 1 1.4-1.4l4.5 4.5 4.5-4.5a1 1 0 0 1 1.4 1.4L13.42 12l4.5 4.5z"/></svg>';
-                    // closeButton.addEventListener("click", function() {
-                    //     alertDiv.remove();
-                    // });
 
                     contentDiv.appendChild(image);
                     contentDiv.appendChild(message);
@@ -422,196 +406,77 @@
 
         <!-- alert -->
         <div class="mt-12">
-            <h1 class="text-[#283D70] ml-20 text-2xl font-semibold">Reccomendation</h1>
+            <h1 class="text-[#283D70] ml-20 text-2xl font-semibold">Recommendation</h1>
         </div>
         <div>
-            <div class="w-[1153px] h-[270px]  mt-3 rounded-[30px] z-20 shadow-md bg-white px-[34px]">
-                <div class="flex flex-row justify-around items-center pt-6">
-                    <div
-                        class="ring-1 ring-[#142F64] w-[106px] text-sm h-[27px] rounded-full flex justify-center items-center ml-[-15px]">
-                        <h1 class="text-[#142F64] font-medium">Semester 1</h1>
+            <div>
+                <div class="w-[1153px] h-[270px]  mt-3 rounded-[30px] z-20 shadow-md bg-white px-[34px]">
+                    <div class="flex flex-row justify-around items-center pt-6">
+                        <div
+                            class="ring-1 ring-[#142F64] w-[135px] text-sm h-[27px] rounded-full flex justify-center items-center ml-[-15px]">
+                            <h1 class="text-[#142F64] font-medium">Recommendation</h1>
+                        </div>
+                        <div class="w-[845px] fill-[#DADADA]">
+                            <hr class="bg-[#DADADA] h-1">
+                        </div>
+                        <div class="flex gap-4 mr-[-15px]">
+                            <a class="swiper-button-prev-unique-1 swiper-button-disabled" href="#">
+                                <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
+                            </a>
+                            <a class="swiper-button-next-unique-1" href="#">
+                                <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="w-[845px] fill-[#DADADA]">
-                        <hr class="bg-[#DADADA] h-1">
-                    </div>
-                    <div class="flex gap-4 mr-[-15px]">
-                        <a class="swiper-button-prev-unique swiper-button-disabled" href="#">
-                            <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-left"></i>
-                        </a>
-                        <a class="swiper-button-next-unique" href="#">
-                            <i style="color: #898A8D;" class="fa-solid fa-2x fa-angle-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper  mySwiper">
-                    <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
-                        <a href="/materi"
-                            class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
-                            <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                <img src="images/uwong.svg" alt="">
-                            </div>
-                            <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
-                                </h1>
-                                <h1
-                                    class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                    Semester 1</h1>
-                                <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                <h1 class="text-[8px] ml-1  text-[#283D70]">25</h1>
-                            </div>
-                        </a>
-                        <div class=" h-[176px] swiper-slide rounded-lg bg-[#F8F1E9]">
-                            <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                <img src="images/uwong.svg" alt="">
-                            </div>
-                            <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
-                                </h1>
-                                <h1
-                                    class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                    Semester 1</h1>
-                                <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                <h1 class="text-[8px] ml-1  text-[#283D70]">25</h1>
-                            </div>
-                        </div>
-                        <div class=" h-[176px] swiper-slide rounded-lg bg-[#F8F1E9]">
-                            <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                <img src="images/uwong.svg" alt="">
-                            </div>
-                            <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
-                                </h1>
-                                <h1
-                                    class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                    Semester 1</h1>
-                                <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                <h1 class="text-[8px] ml-1  text-[#283D70]">25</h1>
-                            </div>
-                        </div>
-                        <div class=" h-[176px] swiper-slide rounded-lg bg-[#F8F1E9]">
-                            <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                <img src="images/uwong.svg" alt="">
-                            </div>
-                            <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
-                                </h1>
-                                <h1
-                                    class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                    Semester 1</h1>
-                                <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                <h1 class="text-[8px] ml-1  text-[#283D70]">25</h1>
-                            </div>
-                        </div>
-                        <div class=" h-[176px] swiper-slide rounded-lg bg-[#F8F1E9]">
-                            <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                <img src="images/uwong.svg" alt="">
-                            </div>
-                            <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
-                                </h1>
-                                <h1
-                                    class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                    Semester 1</h1>
-                                <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                <h1 class="text-[8px] ml-1  text-[#283D70]">25</h1>
-                            </div>
-                        </div>
-                        <div class=" h-[176px] swiper-slide rounded-lg bg-[#F8F1E9]">
-                            <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                <img src="images/uwong.svg" alt="">
-                            </div>
-                            <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
-                                </h1>
-                                <h1
-                                    class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                    Semester 1</h1>
-                                <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                <h1 class="text-[8px] ml-1  text-[#283D70]">25</h1>
-                            </div>
-                        </div>
-                        <div class=" h-[176px] swiper-slide rounded-lg bg-[#F8F1E9]">
-                            <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                <img src="images/uwong.svg" alt="">
-                            </div>
-                            <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
-                                </h1>
-                                <h1
-                                    class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                    Semester 1</h1>
-                                <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                <h1 class="text-[8px] ml-1  text-[#283D70]">25</h1>
-                            </div>
-                        </div>
-                        <div class=" h-[176px] swiper-slide rounded-lg bg-[#F8F1E9]">
-                            <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                <img src="images/uwong.svg" alt="">
-                            </div>
-                            <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
-                                </h1>
-                                <h1
-                                    class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                    Semester 1</h1>
-                                <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                <h1 class="text-[8px] ml-1  text-[#283D70]">25</h1>
-                            </div>
-                        </div>
-                        <div class=" h-[176px] swiper-slide rounded-lg bg-[#F8F1E9]">
-                            <div class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                <img src="{{ asset('images/uwong.svg') }}" alt="">
-                            </div>
-                            <div class="flex ml-2 justify-start flex-col">
-                                <h1 class="text-lg  text-[#283D70] mb-2 font-normal">Logika dan Struktur Diskrit
-                                </h1>
-                                <h1
-                                    class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                    Semester 1</h1>
-                                <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                <h1 class="text-[8px] ml-1  text-[#283D70]">25</h1>
-                            </div>
+
+                    <div class="swiper  swiper-container one">
+                        <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
+                            @foreach ($folder as $matkul)
+                                @if ($matkul->folderSemester == 1)
+                                    <a href="/m{{ $matkul->folderNama }}"
+                                        class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
+                                        <div
+                                            class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
+                                            <img src="images/uwong.svg" alt="">
+                                        </div>
+                                        <div class="flex ml-2 justify-start flex-col">
+                                            <h1
+                                                class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">
+                                                {{ $matkul->folderNama }}
+                                            </h1>
+                                            <h1
+                                                class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
+                                                Semester {{ $matkul->folderSemester }}</h1>
+                                            <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
+                                            <h1 class="text-[8px] ml-1  text-[#283D70]">
+                                                {{ $matkul->folderTotalFiles }}</h1>
+                                        </div>
+                                    </a>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
+            <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+            <script>
+                var swiper1 = new Swiper(".swiper-container.one", {
+                    slidesPerView: 6,
+                    spaceBetween: 34,
+                    loop: false,
+                    pagination: {
+                        el: ".swiper-pagination-one",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next-unique-1',
+                        prevEl: '.swiper-button-prev-unique-1'
+                    }
+
+                });
+            </script>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 6,
-                spaceBetween: 34,
-                loop: false,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next-unique',
-                    prevEl: '.swiper-button-prev-unique'
-                }
-
-            });
-        </script>
     </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 6,
-            spaceBetween: 34,
-            loop: false,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next-unique',
-                prevEl: '.swiper-button-prev-unique'
-            }
-
-        });
-    </script>
 </body>
 
 </html>

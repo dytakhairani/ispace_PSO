@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 //import Facade "Storage"
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use App\Models\Folder;
 
 class PostController extends Controller
 {
@@ -23,9 +24,9 @@ class PostController extends Controller
         //
         $user = Auth::user();
         $ecak = Post::where('foldernama', $folderNama)->get();
-
+        $folder = Folder::whereIn('folderSemester', [1, 2, 3, 4, 5, 6])->get();
         // Kirim data posting ke tampilan
-        return view('pagemateri', compact('user', 'ecak', 'folderNama'));
+        return view('pagemateri', compact('user', 'ecak', 'folderNama', 'folder',));
     }
 
     /**
