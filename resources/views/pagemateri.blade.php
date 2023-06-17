@@ -17,6 +17,8 @@
     <!-- dropdown menu -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
     <title>Our Service</title>
 </head>
 <style>
@@ -431,31 +433,52 @@
 
                     <div class="swiper  swiper-container one">
                         <div class="flex swiper-wrapper  z-10 flex-row mt-4 justify-start">
-                            @foreach ($folder as $matkul)
-                                @if ($matkul->folderSemester == 1)
-                                    <a href="/m{{ $matkul->folderNama }}"
-                                        class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">
-                                        <div
-                                            class=" h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">
-                                            <img src="images/uwong.svg" alt="">
-                                        </div>
-                                        <div class="flex ml-2 justify-start flex-col">
-                                            <h1
-                                                class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">
-                                                {{ $matkul->folderNama }}
-                                            </h1>
-                                            <h1
-                                                class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">
-                                                Semester {{ $matkul->folderSemester }}</h1>
-                                            <h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>
-                                            <h1 class="text-[8px] ml-1  text-[#283D70]">
-                                                {{ $matkul->folderTotalFiles }}</h1>
-                                        </div>
-                                    </a>
-                                @endif
-                            @endforeach
+                            <script>
+                                // Mengacak array $folder secara acak
+                                var shuffledFolder = <?php echo json_encode($folder); ?>;
+                                shuffledFolder.sort(function() {
+                                    return 0.5 - Math.random();
+                                });
+
+                                // Menampilkan folder dengan semester acak antara 1 hingga 6
+                                for (var i = 0; i < shuffledFolder.length; i++) {
+                                    var matkul = shuffledFolder[i];
+                                    var randomSemester = Math.floor(Math.random() * 6) + 1; // Mengacak angka antara 1 hingga 6
+
+                                    if (matkul.folderSemester == randomSemester) {
+                                        var folderNama = matkul.folderNama;
+                                        var folderTotalFiles = matkul.folderTotalFiles;
+                                        var folderLink = "/m" + folderNama;
+
+                                        document.write(
+                                            '<a href="' +
+                                            folderLink +
+                                            '" class="h-[176px]  swiper-slide rounded-lg bg-[#F8F1E9] cursor-pointer hover:opacity-80">' +
+                                            '<div class="h-[63px] bg-[#FABB5A] flex justify-center items-center rounded-t-lg">' +
+                                            '<img src="images/uwong.svg" alt="">' +
+                                            '</div>' +
+                                            '<div class="flex ml-2 justify-start flex-col">' +
+                                            '<h1 class="text-lg  text-[#283D70] my-[8px] font-normal min-h-[2.5rem] leading-[1.25rem] line-clamp-2">' +
+                                            folderNama +
+                                            '</h1>' +
+                                            '<h1 class="rounded-full text-[8px] mb-2 flex justify-center items-center  bg-[#F9DAAB] w-[54px]">' +
+                                            'Semester ' +
+                                            matkul.folderSemester +
+                                            '</h1>' +
+                                            '<h1 class="text-[8px] ml-1  text-[#76829d]">Total files</h1>' +
+                                            '<h1 class="text-[8px] ml-1  text-[#283D70]">' +
+                                            folderTotalFiles +
+                                            '</h1>' +
+                                            '</div>' +
+                                            '</a>'
+                                        );
+                                    }
+                                }
+                            </script>
                         </div>
                     </div>
+
+
                 </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

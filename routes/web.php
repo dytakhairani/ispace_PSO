@@ -59,3 +59,5 @@ Route::get('/page/{id}', [PostController::class, 'show'])->name('post.show');
 Route::get('/materi/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 
 Route::get('/materi/cari',[PostController::class, 'cari']);
+
+
