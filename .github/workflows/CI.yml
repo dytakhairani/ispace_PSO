@@ -21,6 +21,12 @@ jobs:
     - name: Install Composer Dependencies
       run: composer install --no-interaction --prefer-dist
       
+    - name: List root directory for debugging
+      run: ls -la
+
+    - name: List all directories and subdirectories
+      run: find . -type d -print
+      
   test:
     runs-on: ubuntu-latest
 
