@@ -17,7 +17,11 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.1'
-
+    - name: Ensure .env file exists
+      run: |
+        if [ ! -f .env ]; then
+          cp .env.example .env
+        fi
     - name: Install Composer Dependencies
       run: |
         composer install --no-interaction --prefer-dist
