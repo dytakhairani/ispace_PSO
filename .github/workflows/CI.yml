@@ -20,7 +20,7 @@ jobs:
 
     - name: Install Composer Dependencies
       run: composer install --no-interaction --prefer-dist
-
+      
   test:
     runs-on: ubuntu-latest
 
@@ -29,3 +29,4 @@ jobs:
     steps:
     - name: Run Laravel Tests
       run: php artisan test
+      working-directory: ispace_PSO/artisan
