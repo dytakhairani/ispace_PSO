@@ -21,7 +21,7 @@ jobs:
     
     - name: Build Docker Image
       run: |
-        docker build -t my-app:latest -f dockerfile/path/Dockerfile .
+        docker build -t my-app:latest -f Dockerfile .
 
     - name: Upload .env file
       uses: actions/upload-artifact@v2
