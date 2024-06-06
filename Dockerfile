@@ -1,12 +1,12 @@
-# Use the official PHP image
+# Gunakan image PHP dengan FPM
 FROM php:8.1-fpm
 
-# Set working directory
+# Set direktori kerja
 WORKDIR /var/www
 
-# Install dependencies
+# Install dependensi sistem dan ekstensi PHP yang diperlukan
 RUN apt-get update && apt-get install -y \
-    build-essential \
+    libonig-dev \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
@@ -18,23 +18,25 @@ RUN apt-get update && apt-get install -y \
     git \
     curl
 
-# Install PHP extensions
+# Install ekstensi PHP
 RUN docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl
+
+# Konfigurasi dan instal ekstensi gd
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy existing application directory contents
+# Salin konten direktori aplikasi
 COPY . /var/www
 
-# Copy existing application directory permissions
-COPY --chown=www-data:www-data . /var/www
+# Ubah kepemilikan direktori aplikasi ke pengguna www-data
+RUN chown -R www-data:www-data /var/www
 
-# Change current user to www
+# Ubah pengguna saat ini ke www-data
 USER www-data
 
-# Expose port 9000 and start php-fpm server
+# Expose port 9000 dan jalankan server php-fpm
 EXPOSE 9000
 CMD ["php-fpm"]
