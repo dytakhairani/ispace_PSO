@@ -6,7 +6,7 @@ WORKDIR /var/www
 
 # Install dependensi sistem dan ekstensi PHP yang diperlukan
 RUN apt-get update && apt-get install -y \
-    libonig-dev \
+    libzip-dev \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
