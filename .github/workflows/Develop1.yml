@@ -19,15 +19,15 @@ jobs:
           cp .env.example .env
         fi
     
-    - name: Build Docker Image
-      run: |
-        docker build -t my-app:latest -f Dockerfile .
-    
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
     
+    - name: Build Docker Image
+      run: |
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest -f Dockerfile .
+    
     - name: Push Docker Image
-      run: docker push my-app:latest
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
     
     - name: Upload .env file
       uses: actions/upload-artifact@v2
@@ -59,7 +59,7 @@ jobs:
       run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
     
     - name: Pull Docker Image
-      run: docker pull my-app:latest
+      run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
         
     - name: Run Docker Container and Execute Tests
       run: |
@@ -67,5 +67,5 @@ jobs:
           -v ${{ github.workspace }}:/var/www \
           -w /var/www \
           --env-file .env \
-          my-app:latest \
+          ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
           bash -c "composer install --no-interaction --prefer-dist && php artisan test"
