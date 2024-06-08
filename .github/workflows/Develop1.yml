@@ -87,3 +87,18 @@ jobs:
           --env-file .env \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
           php artisan test
+          
+     - name: Verify Application Accessibility
+      run: |
+        docker run -d \
+          -v ${{ github.workspace }}:/var/www \
+          -w /var/www \
+          --env-file .env \
+          -p 8000:8000 \
+          ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
+          php artisan serve --host=0.0.0.0 --port=8000
+
+    - name: Check Application Response
+      run: |
+        sleep 10 # Beri waktu untuk aplikasi berjalan
+        curl -f http://localhost:8000 || exit 1
