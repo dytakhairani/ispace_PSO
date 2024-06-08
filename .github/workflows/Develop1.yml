@@ -28,9 +28,7 @@ jobs:
       with:
         name: env-file
         path: .env
-    - name: Pull Docker Image
-      run: |
-        docker pull my-app:latest
+  
         
   test:
     runs-on: ubuntu-latest
@@ -50,7 +48,11 @@ jobs:
       with:
         name: env-file
         path: .
-
+        
+    - name: Pull Docker Image
+      run: |
+        docker pull my-app:latest
+        
     - name: Run Docker Container and Execute Tests
       run: |
         docker run --rm \
