@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    libonig-dev    # Tambahkan paket oniguruma
 
 # Install ekstensi PHP
 RUN docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl
@@ -34,9 +35,6 @@ COPY . /var/www
 
 # Ubah kepemilikan direktori aplikasi ke pengguna www-data
 RUN chown -R www-data:www-data /var/www
-
-# Ubah pengguna saat ini ke www-data
-USER www-data
 
 # Expose port 9000 dan jalankan server php-fpm
 EXPOSE 9000
