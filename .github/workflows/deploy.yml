@@ -105,10 +105,11 @@ jobs:
     - name: Cleanup
       run: docker rm -f my-app-container
       
-deploy:
-  needs: test
-  runs-on: ubuntu-latest
-  steps:
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    
+    steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
