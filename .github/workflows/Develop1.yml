@@ -61,6 +61,15 @@ jobs:
     - name: Pull Docker Image
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
     
+    - name: Install Composer Dependencies
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}:/var/www \
+          -w /var/www \
+          --env-file .env \
+          ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
+          composer install --no-interaction --prefer-dist
+    
     - name: Generate APP_KEY
       run: |
         docker run --rm \
@@ -77,4 +86,4 @@ jobs:
           -w /var/www \
           --env-file .env \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
-          bash -c "composer install --no-interaction --prefer-dist && php artisan test"
+          php artisan test
