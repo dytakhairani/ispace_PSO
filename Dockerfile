@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    libonig-dev    # Tambahkan paket oniguruma
 
 # Install ekstensi PHP
 RUN docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl
