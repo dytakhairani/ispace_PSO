@@ -1,4 +1,4 @@
-name: Continuous Integration Dockerr
+name: Continuous Integration Docker
 
 on:
   pull_request:
@@ -60,6 +60,15 @@ jobs:
     
     - name: Pull Docker Image
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
+    
+    - name: Generate APP_KEY
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}:/var/www \
+          -w /var/www \
+          --env-file .env \
+          ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
+          php artisan key:generate
         
     - name: Run Docker Container and Execute Tests
       run: |
