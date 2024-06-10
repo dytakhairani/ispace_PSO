@@ -1,4 +1,4 @@
-name: Continuous Integration Docker
+name: CI/CD
 
 on:
   pull_request:
@@ -67,7 +67,7 @@ jobs:
           -w /var/www \
           --env-file .env \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
-          sh -c "chmod -R 755 /var/www && composer install --no-interaction --prefer-dist"
+          sh -c "composer install --no-interaction --prefer-dist"
     
     - name: Generate APP_KEY
       run: |
@@ -101,7 +101,7 @@ jobs:
       run: |
         sleep 10 # Beri waktu untuk aplikasi berjalan
         curl -f http://localhost:8000 || exit 1
-
+    
     - name: Cleanup
       run: docker rm -f my-app-container
       
@@ -116,12 +116,12 @@ jobs:
     - name: Log in to Heroku
       run: |
         echo "${{ secrets.HEROKU_API_KEY }}" | docker login --username=_ --password-stdin registry.heroku.com
-
+    
     - name: Install Heroku CLI
       run: |
         curl https://cli-assets.heroku.com/install.sh | sh
         heroku --version
-
+    
     - name: Pull Docker Image from Docker Hub
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
 
