@@ -136,16 +136,16 @@ jobs:
       run: |
         curl https://cli-assets.heroku.com/install.sh | sh
         heroku --version
-        heroku create Ispace
+        heroku create ispace-app
   
     - name: Pull Docker Image from Docker Hub
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
 
     - name: Tag Docker Image for Heroku Registry
-      run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest registry.heroku.com/Ispace/web
+      run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest registry.heroku.com/ispace-app/web
 
     - name: Push Docker Image to Heroku Registry
-      run: docker push registry.heroku.com/Ispace/web
+      run: docker push registry.heroku.com/ispace-app/web
 
     - name: Release Docker Image on Heroku
-      run: heroku container:release web --app Ispace
+      run: heroku container:release web --app ispace-app
