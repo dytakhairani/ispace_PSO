@@ -77,12 +77,12 @@ jobs:
     
     - name: Generate APP_KEY
       run: |
-        docker run --rm \
-          -v ${{ github.workspace }}:/var/www \
+       docker run --rm \
+          -v $(pwd):/var/www \
           -w /var/www \
-          --env-file .env \
+          --user root \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
-          php artisan key:generate
+          sh -c "chown -R www-data:www-data storage bootstrap/cache && composer install && php artisan key:generate && php artisan test"e
     
     - name: Run Docker Container and Execute Tests
       run: |
