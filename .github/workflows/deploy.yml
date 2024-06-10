@@ -129,7 +129,10 @@ jobs:
       run: |
         curl https://cli-assets.heroku.com/install.sh | sh
         heroku --version
-    
+
+    - name: Create Heroku App
+      run: heroku create <Ispace>
+  
     - name: Pull Docker Image from Docker Hub
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
 
