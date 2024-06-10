@@ -117,14 +117,19 @@ jobs:
       run: |
         echo "${{ secrets.HEROKU_API_KEY }}" | docker login --username=_ --password-stdin registry.heroku.com
 
+    - name: Install Heroku CLI
+      run: |
+        curl https://cli-assets.heroku.com/install.sh | sh
+        heroku --version
+
     - name: Pull Docker Image from Docker Hub
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
 
     - name: Tag Docker Image for Heroku Registry
-      run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest registry.heroku.com/ispace/web
+      run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest registry.heroku.com/<ispace>/web
 
     - name: Push Docker Image to Heroku Registry
-      run: docker push registry.heroku.com/ispace/web
+      run: docker push registry.heroku.com/<ispace>/web
 
     - name: Release Docker Image on Heroku
       run: heroku container:release web --app <ispace>
