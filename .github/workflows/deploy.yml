@@ -82,7 +82,7 @@ jobs:
           -w /var/www \
           --user root \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
-          sh -c "chown -R www-data:www-data storage bootstrap/cache && composer install && php artisan key:generate && php artisan test"e
+          sh -c "chown -R www-data:www-data storage bootstrap/cache && composer install && php artisan key:generate && php artisan test"
     
     - name: Run Docker Container and Execute Tests
       run: |
