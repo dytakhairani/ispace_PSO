@@ -60,6 +60,11 @@ jobs:
     - name: Pull Docker Image
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
     
+    - name: Ensure Vendor Directory Exists
+      run: |
+        mkdir -p vendor
+        sudo chown -R $USER:$USER vendor
+    
     - name: Install Composer Dependencies
       run: |
         docker run --rm \
@@ -126,10 +131,10 @@ jobs:
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
 
     - name: Tag Docker Image for Heroku Registry
-      run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest registry.heroku.com/<ispace>/web
+      run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest registry.heroku.com/<Ispace>/web
 
     - name: Push Docker Image to Heroku Registry
-      run: docker push registry.heroku.com/<ispace>/web
+      run: docker push registry.heroku.com/<Ispace>/web
 
     - name: Release Docker Image on Heroku
-      run: heroku container:release web --app <ispace>
+      run: heroku container:release web --app <heroku-app>
