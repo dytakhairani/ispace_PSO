@@ -1,4 +1,5 @@
 name: CI/CD
+
 on:
   pull_request:
     branches:
@@ -59,10 +60,10 @@ jobs:
     - name: Pull Docker Image
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
     
-    - name: Ensure Vendor Directory Exists
+    - name: Ensure Vendor and Storage Directories Exist
       run: |
-        mkdir -p vendor
-        sudo chown -R $USER:$USER vendor
+        mkdir -p vendor storage/logs
+        sudo chown -R $USER:$USER vendor storage
     
     - name: Install Composer Dependencies
       run: |
@@ -82,13 +83,14 @@ jobs:
           --env-file .env \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
           php artisan key:generate
-        
+    
     - name: Run Docker Container and Execute Tests
       run: |
         docker run --rm \
           -v ${{ github.workspace }}:/var/www \
           -w /var/www \
           --env-file .env \
+          --user root \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
           php artisan test
     
@@ -99,6 +101,7 @@ jobs:
           -w /var/www \
           --env-file .env \
           -p 8000:8000 \
+          --user root \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
           php artisan serve --host=0.0.0.0 --port=8000
     
