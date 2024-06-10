@@ -1,5 +1,4 @@
 name: CI/CD
-
 on:
   pull_request:
     branches:
@@ -71,6 +70,7 @@ jobs:
           -v ${{ github.workspace }}:/var/www \
           -w /var/www \
           --env-file .env \
+          --user root \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
           sh -c "composer install --no-interaction --prefer-dist"
     
@@ -137,4 +137,4 @@ jobs:
       run: docker push registry.heroku.com/<Ispace>/web
 
     - name: Release Docker Image on Heroku
-      run: heroku container:release web --app <heroku-app>
+      run: heroku container:release web --app <Ispace>
