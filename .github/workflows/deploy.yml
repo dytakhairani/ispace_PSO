@@ -67,7 +67,7 @@ jobs:
           -w /var/www \
           --env-file .env \
           ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest \
-          composer install --no-interaction --prefer-dist
+          sh -c "mkdir -p /var/www/vendor && composer install --no-interaction --prefer-dist"
     
     - name: Generate APP_KEY
       run: |
