@@ -121,11 +121,31 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Deploy to Heroku
-      uses: Fokusdotid/heroku-docker@v1.0.1
-      with:
-        email: ${{ secrets.HEROKU_EMAIL }}
-        api_key: ${{ secrets.HEROKU_API_KEY }}
-        app_name: ${{ secrets.HEROKU_APP_NAME }}
-        dockerfile: Dockerfile
-        dockerfile_path: .
+    - name: Log in to Heroku
+      run: |
+        echo "${{ secrets.HEROKU_API_KEY }}" | docker login --username=_ --password-stdin registry.heroku.com
+    
+    - name: Install Heroku CLI
+      run: |
+        curl https://cli-assets.heroku.com/install.sh | sh
+        heroku --version
+
+    - name: Create Heroku App
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: |
+        curl https://cli-assets.heroku.com/install.sh | sh
+        heroku --version
+        heroku create ispace-app
+  
+    - name: Pull Docker Image from Docker Hub
+      run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
+
+    - name: Tag Docker Image for Heroku Registry
+      run: docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest registry.heroku.com/ispace-app/web
+
+    - name: Push Docker Image to Heroku Registry
+      run: docker push registry.heroku.com/ispace-app/web
+
+    - name: Release Docker Image on Heroku
+      run: heroku container:release web --app ispace-app
