@@ -1,7 +1,11 @@
 # Gunakan image PHP dengan FPM
 FROM php:8.1-fpm
 
-# Set direktori kerja
+# Set permissions for /var/www directory
+RUN chmod -R 777 /var/www
+
+# Other Dockerfile commands
+COPY . /var/www
 WORKDIR /var/www
 
 # Install dependensi sistem dan ekstensi PHP yang diperlukan
