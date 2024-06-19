@@ -1,13 +1,21 @@
 provider "google" {
-  credentials = file("<path-to-your-service-account-json-file>")
+  credentials = file(var.gcp_credentials_file)
   project     = var.project_id
   region      = var.region
 }
 
+variable "gcp_credentials_file" {}
+variable "project_id" {}
+variable "region" {
+  default = "us-central1"
+}
+variable "zone" {
+  default = "us-central1-a"
+}
+
 resource "google_compute_instance" "default" {
-  name         = "terraform-instance"
+  name         = "instance-name"
   machine_type = "f1-micro"
-  zone         = var.zone
 
   boot_disk {
     initialize_params {
@@ -17,6 +25,8 @@ resource "google_compute_instance" "default" {
 
   network_interface {
     network = "default"
-    access_config {}
+
+    access_config {
+    }
   }
 }
