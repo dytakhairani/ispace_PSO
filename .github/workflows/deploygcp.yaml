@@ -129,6 +129,8 @@ jobs:
 
     - name: Initialize Terraform
       run: terraform init
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
 
     - name: Apply Terraform
       run: terraform apply -auto-approve -var="gcp_credentials_file=${HOME}/gcp-credentials.json" -var="project_id=ispacepso"
