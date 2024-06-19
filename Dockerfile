@@ -35,6 +35,9 @@ COPY . /var/www
 # Ubah kepemilikan direktori aplikasi ke pengguna www-data
 RUN chown -R www-data:www-data /var/www
 
+# Install Composer dependencies
+RUN composer install --no-dev --optimize-autoloader
+
 # Ubah pengguna saat ini ke www-data
 USER www-data
 
