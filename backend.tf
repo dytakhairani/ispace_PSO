@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "<your-bucket-name>"
+    bucket = "ispace_pso"
     prefix = "terraform/state"
   }
 }
