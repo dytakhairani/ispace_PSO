@@ -122,4 +122,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f my-app-container 
       - name: Run docker container
-        run: docker run -d -p 9000:9000 --name my-app-container ${{ secrets.DOCKER_HUB_USERNAME }}/my-app 
+        run: docker run -d -p 3000:9000 --name my-app-container ${{ secrets.DOCKER_HUB_USERNAME }}/my-app 
