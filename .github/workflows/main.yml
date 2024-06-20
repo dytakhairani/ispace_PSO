@@ -1,4 +1,4 @@
-name: CI/CD Ispace to AWS
+name: CI/CD Ispace-App to AWS
 
 on:
   pull_request:
