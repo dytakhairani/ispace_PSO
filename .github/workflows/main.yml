@@ -126,10 +126,18 @@ jobs:
     - name: Create .env file
       run: echo '${{ secrets.ENV_FILE }}' > .env
       
-    - name: Run docker container
+   - name: Run docker container
       run: |
         docker run -d --name my-app-container --env-file .env -p 3000:9000 --user root ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
-        docker exec -it my-app-container php artisan key:generate
-        docker exec -it my-app-container php artisan cache:clear
-        docker exec -it my-app-container php artisan config:cache
-        docker exec -it my-app-container php artisan migrate
+
+    - name: Generate application key
+      run: docker exec my-app-container php artisan key:generate
+
+    - name: Clear cache
+      run: docker exec my-app-container php artisan cache:clear
+
+    - name: Cache config
+      run: docker exec my-app-container php artisan config:cache
+
+    - name: Run migrations
+      run: docker exec my-app-container php artisan migrate
