@@ -130,15 +130,11 @@ jobs:
     - name: Run docker container
       run: |
         docker run -d --name my-app-container --env-file .env -p 3000:9000 --user root ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
-
-    - name: Generate application key
-      run: docker exec my-app-container php artisan key:generate
-
-    - name: Clear cache
-      run: docker exec my-app-container php artisan cache:clear
-
-    - name: Cache config
-      run: docker exec my-app-container php artisan config:cache
+        docker exec my-app-container php artisan key:generate
+        docker exec my-app-container php artisan cache:clear
+        docker exec my-app-container php artisan config:cache
+        docker exec my-app-container php artisan migrate
+        docker exec my-app-container php artisan serve --host=0.0.0.0 --port=9000
 
     - name: Run migrations
       run: docker exec my-app-container php artisan migrate
