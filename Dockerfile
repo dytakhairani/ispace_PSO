@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    default-mysql-client
 
 # Install ekstensi PHP
 RUN docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl
