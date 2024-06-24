@@ -42,10 +42,6 @@ RUN composer install --no-dev --optimize-autoloader
 # Ubah pengguna saat ini ke www-data
 USER www-data
 
-RUN php artisan key:generate
-RUN php artisan config:clear
-RUN php artisan config:cache
-
 # Expose port 9000 dan jalankan server php-fpm
 EXPOSE 9000
 CMD ["php-fpm"]
