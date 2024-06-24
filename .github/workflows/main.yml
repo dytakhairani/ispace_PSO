@@ -1,6 +1,6 @@
 name: CI/CD Ispace-App to AWS
 
-on:
+  on:
   pull_request:
     branches:
       - main
