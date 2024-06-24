@@ -23,7 +23,7 @@ jobs:
       run: composer install --no-interaction --prefer-dist
         
     - name: Generate APP_KEY
-      run: php artisan key:generate
+      run: php artisan key:generate --ansi
 
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
@@ -125,7 +125,7 @@ jobs:
 
       - name: Generate APP_KEY and update .env file
         run: |
-          APP_KEY=$(docker run --rm --env-file .env ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest php artisan key:generate --show --ansi)
+          APP_KEY=$(docker run --rm --env-file .env ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest php artisan key:generate --show)
           echo "APP_KEY=${APP_KEY}" >> .env
 
       - name: Run Docker container
