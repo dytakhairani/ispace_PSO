@@ -13,21 +13,23 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Ensure .env file exists and generate APP_KEY
+    - name: Ensure .env file exists
       run: |
         if [ ! -f .env ]; then
           cp .env.example .env
         fi
-        # Generate APP_KEY and save to .env
-        key=$(php artisan key:generate --show --ansi | tail -n 1)
-        echo "APP_KEY=$key" >> .env
+
+    - name: Install Composer Dependencies
+      run: composer install --no-interaction --prefer-dist
+        
+    - name: Generate APP_KEY
+      run: php artisan key:generate --ansi
 
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
     
     - name: Build Docker Image
-      run: |
-        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest -f Dockerfile .
+      run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest -f Dockerfile .
     
     - name: Push Docker Image
       run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
@@ -101,7 +103,7 @@ jobs:
     
     - name: Verify Application Accessibility
       run: |
-        sleep 10 # Allow time for the application to start
+        sleep 10 # Give time for the application to start
         curl -f http://localhost:8000 || exit 1
     
     - name: Cleanup
@@ -111,18 +113,23 @@ jobs:
     needs: test
     runs-on: self-hosted
     steps:
-      - name: Pull image from docker hub
+      - name: Pull image from Docker Hub
         run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
+
       - name: Delete old container
         run: docker rm -f my-app-container 
-      - name: Generate APP_KEY and update .env file
-        run: |
-          echo 'APP_KEY=' >> .env
-          echo "APP_KEY=$(openssl rand -base64 32)" >> .env
-      - name: Run docker container
+
+      - name: Ensure .env file exists
         run: |
           echo '${{ secrets.ENV_FILE }}' > .env
+
+      - name: Generate APP_KEY and update .env file
+        run: |
+          APP_KEY=$(docker run --rm --env-file .env ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest php artisan key:generate --show --ansi)
+          echo "APP_KEY=${APP_KEY}" >> .env
+
+      - name: Run Docker container
+        run: |
           docker run -d --name my-app-container --env-file .env -p 3000:9000 --user root ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest php artisan serve --host=0.0.0.0 --port=9000
-          docker exec my-app-container php artisan key:generate
           docker exec my-app-container php artisan cache:clear
           docker exec my-app-container php artisan config:cache
