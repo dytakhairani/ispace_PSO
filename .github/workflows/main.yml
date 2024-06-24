@@ -113,15 +113,23 @@ jobs:
     - name: Cleanup
       run: docker rm -f my-app-container
 
-  deploy:
-    needs: test
-    runs-on: self-hosted
-    steps:
-      - name: Pull image from docker hub
-        run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
-      - name: Delete old container
-        run: docker rm -f my-app-container 
-      - name: Run docker container
-        run: |
-          echo '${{ secrets.ENV_FILE }}' > .env
-          docker run -d --name my-app-container --env-file .env -p 3000:9000 --user root ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest sh -c "php artisan cache:clear && php artisan key:generate && php artisan config:cache && php artisan migrate && php artisan serve --host=0.0.0.0 --port=9000"
+deploy:
+  needs: test
+  runs-on: self-hosted
+  steps:
+    - name: Pull image from docker hub
+      run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
+      
+    - name: Delete old container
+      run: docker rm -f my-app-container || true  # Ignore error if container does not exist
+    
+    - name: Create .env file
+      run: echo '${{ secrets.ENV_FILE }}' > .env
+      
+    - name: Run docker container
+      run: |
+        docker run -d --name my-app-container --env-file .env -p 3000:9000 --user root ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
+        docker exec -it my-app-container php artisan key:generate
+        docker exec -it my-app-container php artisan cache:clear
+        docker exec -it my-app-container php artisan config:cache
+        docker exec -it my-app-container php artisan migrate
