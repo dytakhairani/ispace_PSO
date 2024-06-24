@@ -113,10 +113,10 @@ jobs:
     - name: Cleanup
       run: docker rm -f my-app-container
 
-deploy:
-  needs: test
-  runs-on: self-hosted
-  steps:
+  deploy:
+    needs: test
+    runs-on: self-hosted
+    steps:
     - name: Pull image from docker hub
       run: docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
       
