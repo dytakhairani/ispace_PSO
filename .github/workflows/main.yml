@@ -18,7 +18,9 @@ jobs:
         if [ ! -f .env ]; then
           cp .env.example .env
         fi
-        php artisan key:generate --show --ansi | tail -n 1 | tee -a .env
+        # Generate APP_KEY and save to .env
+        key=$(php artisan key:generate --show --ansi | tail -n 1)
+        echo "APP_KEY=$key" >> .env
 
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
