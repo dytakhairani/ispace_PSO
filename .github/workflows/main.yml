@@ -129,7 +129,7 @@ jobs:
       
     - name: Run docker container
       run: |
-        docker run -d --name my-app-container --env-file .env -p 3000:9000 --user root ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
+        docker run -d --name my-app-container --env-file .env -p 8000:9000 --user root ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
         docker exec my-app-container php artisan key:generate
         docker exec my-app-container php artisan cache:clear
         docker exec my-app-container php artisan config:cache
