@@ -124,4 +124,4 @@ jobs:
       - name: Run docker container
         run: |
           echo '${{ secrets.ENV_FILE }}' > .env
-          docker run -d --name my-app-container --env-file .env -p 3000:9000 --user root ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest php artisan key:generate && php artisan cache:clear && php artisan config:cache && php artisan migrate && php artisan serve --host=0.0.0.0 --port=9000
+          docker run -d --name my-app-container --env-file .env -p 3000:9000 --user root ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest sh -c "php artisan key:generate && php artisan cache:clear && php artisan config:cache && php artisan migrate && php artisan serve --host=0.0.0.0 --port=9000"
