@@ -124,7 +124,7 @@ jobs:
       - name: Generate APP_KEY and update .env file
         run: |
           echo 'APP_KEY=' >> .env
-          php -r "echo 'APP_KEY=' . hash('sha256', Str::random(32)) . PHP_EOL;" >> .env
+          php -r "echo 'APP_KEY=' . str_random(32) . PHP_EOL;" >> .env
       - name: Run docker container
         run: |
           echo '${{ secrets.ENV_FILE }}' > .env
