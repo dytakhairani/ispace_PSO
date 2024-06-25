@@ -134,7 +134,7 @@ jobs:
           docker exec my-app-container php artisan cache:clear
           docker exec my-app-container php artisan config:cache
           
- terraform:
+  terraform:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
