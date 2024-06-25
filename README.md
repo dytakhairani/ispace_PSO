@@ -8,9 +8,13 @@ Website ini dibuat untuk membantu mahasiswa sistem Informasi untuk saling berbag
 
 Features:
 Web interface: AWS EC2
+
 Database hosting: AWS RDS
+
 Framework:PHP
+
 Programing Language: Laravel
+
 Container : Docker
 
 Link Website: 
